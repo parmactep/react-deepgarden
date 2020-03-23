@@ -1,0 +1,31 @@
+._Dialog
+	layer()
+	background: $palette.background
+	margin: auto
+	border-radius: $borderRadius
+
+	&__Header
+		font-size: 1.4em
+		padding: 20px
+		background: $palette.accent.background
+		color: #FFF
+		border-top-left-radius: inherit
+		border-top-right-radius: inherit
+
+	&__Body
+		padding: 20px
+
+	&__Footer
+		text-align: right
+		padding: 20px
+		//border-top: 1px solid $palette.border
+
+	&__Overlay
+		display: flex
+		position: fixed
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+		padding: 20px
+		background: rgba(0,0,0,0.7)

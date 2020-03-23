@@ -1,0 +1,36 @@
+._Toast
+	background: #FFF
+	border-left: 3px solid $palette.border
+	padding: 10px 20px
+	layer()
+	margin-top: 20px
+
+	&__Title
+		font-size: 1.2em
+		color: $palette.strict.color
+
+		:not(:last-child)
+			margin-bottom: .4em
+
+	&__Message
+		white-space: pre-line
+
+	&--Notice
+		border-color: $palette.notice.border
+
+	&--Success
+		border-color: $palette.success.border
+
+	&--Warning
+		border-color: $palette.warning.border
+
+	&--Danger
+		border-color: $palette.danger.border
+
+	&__Overlay
+		display: flex
+		flex-direction: column
+		align-items: flex-end
+		position: absolute
+		top: 0
+		right: 20px

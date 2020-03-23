@@ -1,0 +1,37 @@
+@require 'deepgarden'
+
+._Table
+	position: relative
+
+	&__Table
+		display: table
+		width: 100%
+		border-collapse: collapse
+		position: relative
+
+	&__Header
+		display: table-header-group
+
+	&__Column
+		display: table-cell
+		font-size: 0.9em
+		line-height: 0.9em
+		vertical-align: middle
+		border: 1px solid $palette.border
+		color: $palette.light
+
+		&:first-of-type
+			border-left: none
+
+	&__Body
+		display: table-row-group
+
+	&__Row
+		display: table-row
+
+	&__Cell
+		display: table-cell
+		overflow: hidden
+		white-space: nowrap
+		text-overflow: ellipsis
+		vertical-align: middle

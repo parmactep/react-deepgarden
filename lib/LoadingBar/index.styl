@@ -1,0 +1,28 @@
+@require 'deepgarden'
+
+._LoadingBar
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	height: 3px
+	overflow: hidden
+
+	&__Progress
+		display: block
+		background: red
+		height: 100%
+		width: 0
+
+		~/.-Pending &
+			width: 0
+			transition: none
+
+		~/.-Request &
+			width: 70%
+			height: 100%
+			transition: width 2s
+
+		~/.-Done &
+			width: 100%
+			transition: width 1s

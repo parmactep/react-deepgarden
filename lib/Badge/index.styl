@@ -1,0 +1,40 @@
+@require 'deepgarden'
+
+._Badge
+	display: inline-block
+	font-size: 1rem
+	line-height: 1em
+	padding: 0.25em 0.5em
+	border-radius: $borderRadius
+	color: #FFF
+	white-space: nowrap //@@TODO Background or color fix
+
+	&--Notice&
+		color: #FFF
+		background: $palette.notice.background
+
+	&--Success&
+		color: #FFF
+		background: $palette.success.background
+
+	&--Warning&
+		color: #FFF
+		background: $palette.warning.background
+
+	&--Danger&
+		color: #FFF
+		background: $palette.danger.background
+
+	/* Size */
+
+	&--Bigger&
+		font-size: 1.1rem
+
+	&--Biggest&
+		font-size: 1.3rem
+
+	&--Smaller&
+		font-size: 0.9rem
+
+	&--Smallest&
+		font-size: 0.8rem

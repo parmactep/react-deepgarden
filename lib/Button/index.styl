@@ -1,0 +1,71 @@
+@require 'deepgarden'
+
+._Button
+	resetLink()
+	display: inline-block
+	white-space: nowrap
+	padding: 0 20px
+	border-radius: $borderRadius
+	vertical-align: middle
+	cursor: pointer
+	height: 2.25em
+	line-height: 2.25em
+	user-select: none
+	border: 1px solid $palette.border
+	background: $palette.background
+
+	&:focus
+		border-color: $palette.accent.border
+		box-shadow: 0 0 3px 1px $palette.accent.border
+
+	/* Type */
+
+	&--Notice&
+		border-color: $palette.notice.color
+		background: $palette.notice.color
+		color: #FFF
+
+	&--Success&
+		border-color: $palette.success.color
+		background: $palette.success.color
+		color: #FFF
+
+	&--Warning&
+		border-color: $palette.warning.color
+		background: $palette.warning.color
+		color: #FFF
+
+	&--Danger&
+		border-color: $palette.danger.color
+		background: $palette.danger.color
+		color: #FFF
+
+	&--Ghost&
+		background: transparent
+		color: $palette.color
+
+	&--Ghost&--Notice&
+		color: $palette.notice.color
+
+	&--Ghost&--Success&
+		color: $palette.success.color
+
+	&--Ghost&--Warning&
+		color: $palette.warning.color
+
+	&--Ghost&--Danger&
+		color: $palette.danger.color
+
+	/* Size */
+
+	&--Bigger&
+		font-size: 1.1rem
+
+	&--Biggest&
+		font-size: 1.3rem
+
+	&--Smaller&
+		font-size: 0.9rem
+
+	&--Smallest&
+		font-size: 0.8rem

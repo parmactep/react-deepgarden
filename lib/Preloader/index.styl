@@ -1,0 +1,31 @@
+._Preloader
+	display: flex
+	height: 100%
+	color: $palette.accent.color
+
+	&::before
+		content: ' '
+		display: block
+		margin: auto
+		text-align: center
+		width: 2.1em
+		height: 2.1em
+		border-width: .2em
+		border-style: solid
+		border-top-color: transparent
+		border-bottom-color: transparent
+		border-radius: 50%
+		animation: spin linear 2s infinite
+
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(-180deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

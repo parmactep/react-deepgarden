@@ -1,0 +1,51 @@
+._Pagination
+	display: inline-flex
+	align-items: center
+	vertical-align: middle
+	border-radius: $borderRadius
+
+	&__Select
+		padding: 0 15px
+
+	&__Previous
+		border-radius: $borderRadius 0 0 $borderRadius
+
+	&__Next
+		border-radius: 0 $borderRadius $borderRadius 0
+
+	&__Previous
+	&__Next
+		height: 2.25em
+		line-height: 2.25em
+		padding: 0 15px
+		background: $palette.background
+		border: 1px solid $palette.border
+		cursor: pointer
+		raised()
+		display: flex
+		align-items: center
+
+		svg
+			color: $palette.descent.color
+
+		&--Disabled
+			color: $palette.disabled.color
+			box-shadow: none
+			border-color: $palette.disabled.border
+
+			svg
+				color: $palette.disabled.color
+
+	/* Size */
+
+	&--Bigger
+		font-size: 1.1rem
+
+	&--Biggest
+		font-size: 1.3rem
+
+	&--Smaller
+		font-size: 0.9rem
+
+	&--Smallest
+		font-size: 0.8rem
