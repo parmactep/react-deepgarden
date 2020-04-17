@@ -2,7 +2,7 @@ import React from 'react';
 
 import classNames from 'classnames';
 
-import OnClickOutside from '../../hoc/OnClickOutside';
+import OnClickOutside from '../../hoc/OutsideClick';
 
 const DIRECTION_CLASS = {
 	top: 'Top',

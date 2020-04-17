@@ -1,7 +1,7 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
 
-export default class extends React.Component {
+export default class OutsideClick extends React.Component {
 	componentDidMount() {
 		this.node = findDOMNode(this);
 		document.addEventListener('click', this.handleClickOutside);
