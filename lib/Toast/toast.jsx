@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Toast from './';
+import Toast from './index';
 
 const DEFAULT_TIMEOUT = 5000;
 
