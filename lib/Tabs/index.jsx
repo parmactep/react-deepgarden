@@ -9,6 +9,8 @@ const Tab = (props) => {
 	);
 };
 
+Tab.displayName = 'Tab';
+
 export default class Tabs extends React.Component {
 	static defaultProps = {
 		tabs: [],
@@ -40,14 +42,15 @@ export default class Tabs extends React.Component {
 	renderChildren = (child, key) => {
 		if (!child.type || child.type.displayName !== 'Tab' || key === this.state.active)
 			return true;
-	}
+	};
 	render() {
+		const children = React.Children.toArray(this.props.children);
 		return (
 			<div className="_Tabs">
 				<div className="_Tabs__Control">
-					{this.props.children.map(this.renderControl)}
+					{children.map(this.renderControl)}
 				</div>
-				{this.props.children.filter(this.renderChildren)}
+				{children.filter(this.renderChildren)}
 			</div>
 		);
 	}
