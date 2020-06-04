@@ -7,7 +7,7 @@ const DEFAULT_TIMEOUT = 5000;
 
 import { portal } from '../../hoc/portal';
 
-const $node = document.createElement('div'); // @TODO: Test browser support
+// const $node = document.createElement('div'); // @TODO: Test browser support
 
 let toasts = new Map();
 
