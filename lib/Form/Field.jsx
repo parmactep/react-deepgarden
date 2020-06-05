@@ -13,17 +13,12 @@ export default class Field extends React.Component {
 		this.props.onChange && this.props.onChange(value);
 	};
 	render() {
-		const { input, className, name, label, ...props } = this.props;
+		const { input, className, name, children, ...props } = this.props;
 		const Input = input || 'input';
 		const value = get(this.context.values, name);
 
 		return (
-			<label className={classNames('_Form__Field', {'_Form__Field--hasError': (!this.context.isDirty || this.context.touched[name]) && this.context.errors[name]}, className)}>
-				{!!label && (
-					<span className="_Form__Label">
-						{label}
-					</span>
-				)}
+			<div className={classNames('_Form__Field', {'_Form__Field--hasError': (!this.context.isDirty || this.context.touched[name]) && this.context.errors[name]}, className)}>
 				<Input
 					{...props}
 					value={value}
@@ -31,7 +26,8 @@ export default class Field extends React.Component {
 					onChange={this.handleChange}
 					onBlur={this.context.handleBlur}
 				/>
-			</label>
+				{children}
+			</div>
 		);
 	}
 }

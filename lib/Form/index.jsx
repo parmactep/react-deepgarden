@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { get, set, merge } from 'lodash';
+import { get, set } from 'lodash';
 
 import Context from './Context';
 
@@ -13,7 +13,6 @@ export default class FormContext extends React.Component {
 	};
 	static defaultProps = {
 		initialValues: {},
-		volatile: {},
 	};
 	state = {
 		values: this.props.initialValues,
@@ -25,25 +24,15 @@ export default class FormContext extends React.Component {
 		this.touch(e.target.name);
 	};
 	set = (name, value, isTouched = false) => {
-		this.handleChange(name, value, isTouched);
-	};
-	handleChange = (name, value, isTouched = false) => {
 		this.setState(prevState => {
-			const values = set({...prevState.values}, name, value);
-			this.props.volatile[name] && merge(
-				values,
-				this.props.volatile[name](values),
-			);
-			const touched = {...prevState.touched};
-			isTouched && merge(
-				touched,
-				{
-					[name]: true,
-				}
-			);
 			return {
-				values,
-				touched,
+				values: set({...prevState.values}, name, value),
+				...(isTouched && {
+					touched: {
+						...prevState.touched,
+						[name]: true,
+					}
+				}),
 			}
 		}, this.validate);
 	};
@@ -81,7 +70,7 @@ export default class FormContext extends React.Component {
 			isValid: this.isValid,
 			isDirty: this.state.isDirty,
 			handleBlur: this.handleBlur,
-			handleChange: this.handleChange,
+			handleChange: this.set,
 			handleSubmit: this.handleSubmit,
 		};
 		return (
