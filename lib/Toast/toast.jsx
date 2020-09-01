@@ -7,7 +7,7 @@ const DEFAULT_TIMEOUT = 5000;
 
 import { portal } from '../../hoc/portal';
 
-const $node = document.createElement('div'); // @TODO: Test browser support
+const $node = window ? document.createElement('div') : null; // @TODO: Test browser support
 
 let toasts = new Map();
 
@@ -20,16 +20,23 @@ class Toasts extends React.Component {
 	}
 }
 
+function renderToast() {
+	if (window) {
+		ReactDOM.render(
+			<Toasts />,
+			$node,
+		);
+	} else {
+		ReactDOM.render(<Toasts />);
+	}
+}
+
 export default function toast({ timeout = DEFAULT_TIMEOUT, ...props }) {
 
 	toasts.set(props, true);
 
 	setTimeout(() => removeToast(props), timeout);
-
-	ReactDOM.render(
-		<Toasts />,
-		$node,
-	);
+	renderToast();
 }
 
 function removeToast(props) {
@@ -37,11 +44,8 @@ function removeToast(props) {
 	toasts.delete(props);
 
 	if (toasts.size) {
-		ReactDOM.render(
-			<Toasts />,
-			$node,
-		);
-	} else {
+		renderToast();
+	} else if (window) {
 		ReactDOM.unmountComponentAtNode($node);
 	}
 }
