@@ -4,7 +4,11 @@ import ReactDOM from 'react-dom';
 import Button from '../Button';
 import Group from '../Group';
 
-export default class Dialog extends React.Component {
+import withClassName from '../../hoc/withClassName';
+
+export default
+@withClassName('_Dialog')
+class Dialog extends React.Component {
 	handleConfirm = () => {
 		this.props.onConfirm && this.props.onConfirm();
 	};
@@ -14,7 +18,7 @@ export default class Dialog extends React.Component {
 	render() {
 		return (
 			<div className="_Dialog__Overlay">
-				<div className="_Dialog">
+				<div className={this.props.className}>
 					{
 						<div className="_Dialog__Header">
 							{ `${this.props.title || 'Delete confirmation'}` }
