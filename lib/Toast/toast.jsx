@@ -20,23 +20,20 @@ class Toasts extends React.Component {
 	}
 }
 
-function renderToast() {
-	if (window) {
-		ReactDOM.render(
-			<Toasts />,
-			$node,
-		);
-	} else {
-		ReactDOM.render(<Toasts />);
-	}
-}
-
 export default function toast({ timeout = DEFAULT_TIMEOUT, ...props }) {
+
+	if (!window) {
+		return false;
+	}
 
 	toasts.set(props, true);
 
 	setTimeout(() => removeToast(props), timeout);
-	renderToast();
+
+	ReactDOM.render(
+		<Toasts />,
+		$node,
+	);
 }
 
 function removeToast(props) {
@@ -44,8 +41,11 @@ function removeToast(props) {
 	toasts.delete(props);
 
 	if (toasts.size) {
-		renderToast();
-	} else if (window) {
+		ReactDOM.render(
+			<Toasts />,
+			$node,
+		);
+	} else {
 		ReactDOM.unmountComponentAtNode($node);
 	}
 }
