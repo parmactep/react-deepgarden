@@ -7,7 +7,7 @@ const DEFAULT_TIMEOUT = 5000;
 
 import { portal } from '../../hoc/portal';
 
-// const $node = document.createElement('div'); // @TODO: Test browser support
+const $node = window ? document.createElement('div') : null; // @TODO: Test browser support
 
 let toasts = new Map();
 
@@ -21,6 +21,10 @@ class Toasts extends React.Component {
 }
 
 export default function toast({ timeout = DEFAULT_TIMEOUT, ...props }) {
+
+	if (!window) {
+		return false;
+	}
 
 	toasts.set(props, true);
 
