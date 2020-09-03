@@ -19,8 +19,7 @@ export default class DropDown extends React.Component {
 	};
 	render() {
 		return (
-			<div className={classNames('_DropDown', `_DropDown--${DIRECTION_CLASS[this.props.direction]}`, this.props.className)}>
-				<OnClickOutside onClickOutside={this.handleClickOutside}>
+            <div className={classNames('_DropDown', `_DropDown--${DIRECTION_CLASS[this.props.direction]}`, this.props.className)} style={this.props.style}>				<OnClickOutside onClickOutside={this.handleClickOutside}>
 					<div className="_DropDown__Body">
 						{this.props.children}
 					</div>
