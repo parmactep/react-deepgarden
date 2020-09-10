@@ -1,28 +1,35 @@
 @require 'deepgarden'
 
 ._DropDown
-	height: 0
-	width: 0
-	color: $palette.color
-	font-weight: normal
-	position: relative
-	text-align: left
+	&__Point
+		height: 0
+		width: 0
+		color: $palette.color
+		font-weight: normal
+		position: absolute
+		text-align: left
 
 	&__Body
+		color: $palette.color
+		font-weight: normal
 		position: absolute
-		z-index: 1000
-		padding: 5px 0
-		background: #FFF
-		border-radius: $borderRadius
-		border: 1px solid $palette.descent.border
-		max-height: 250px
-		overflow: auto
-		layer()
+		text-align: left
 
-	&--Bottom &__Body
-		top: 0
-		transform: translate(-50%, 0)
+		&--Children
+			position: absolute
+			z-index: 1000
+			padding: 5px 0
+			background: #FFF
+			border-radius: $borderRadius
+			border: 1px solid $palette.descent.border
+			max-height: 250px
+			overflow: auto
+			layer()
 
-	&--LeftBottom &__Body
-		right: 0
-		top: 0
+		&--Bottom &--Children
+			top: 0
+			transform: translate(-50%, 0)
+
+		&--LeftBottom &--Children
+			right: 0
+			top: 0
