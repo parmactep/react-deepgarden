@@ -16,7 +16,7 @@ const SIZES = {
 };
 
 export default function withClassName(className) {
-	return (Component) => ({ _type, _size, ...props }) => {
+	return (Component) => ({ _type, _size, _block, ...props }) => {
 		return (
 			<Component
 				{...props}
@@ -24,6 +24,7 @@ export default function withClassName(className) {
 					className,
 					TYPES[_type] && className + TYPES[_type],
 					SIZES[_size] && className + SIZES[_size],
+					_block && '--isBlock',
 					props.className,
 				)}
 			/>
