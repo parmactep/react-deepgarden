@@ -7,15 +7,17 @@ import Context from './Context';
 
 export default class Form extends React.Component {
 	static contextType = Context;
+	const { className, pending, children, ...props } = this.props;
 	render() {
 		return (
 			<form
-				className={classNames('_Form__Form', this.props.className)}
+				{...props}
+				className={classNames('_Form__Form', className)}
 				onSubmit={this.context.handleSubmit}
 			>
-				{this.props.children}
+				{children}
 				<button type="submit" className="_Form__HiddenSubmit" />
-				{this.props.pending && <Preloader />}
+				{pending && <Preloader />}
 			</form>
 		);
 	}
