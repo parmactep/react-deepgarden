@@ -7,8 +7,8 @@ import Context from './Context';
 
 export default class Form extends React.Component {
 	static contextType = Context;
-	const { className, pending, children, ...props } = this.props;
 	render() {
+		const { className, pending, children, ...props } = this.props;
 		return (
 			<form
 				{...props}
