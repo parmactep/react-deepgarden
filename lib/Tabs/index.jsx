@@ -14,9 +14,10 @@ Tab.displayName = 'Tab';
 export default class Tabs extends React.Component {
 	static defaultProps = {
 		tabs: [],
+		activeTab: 0,
 	};
 	state = {
-		active: 0,
+		active: this.props.activeTab,
 	};
 	handleChange = (e) => {
 		const key = Number(e.currentTarget.dataset.key);
