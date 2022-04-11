@@ -6,7 +6,6 @@ import {FaChevronLeft, FaChevronRight} from 'react-icons/fa';
 
 import withClassName from '../../hoc/withClassName';
 
-export default
 @withClassName('_Pagination')
 class Pagination extends React.Component {
 	static propTypes = {
@@ -53,5 +52,7 @@ class Pagination extends React.Component {
 		</div>
 	}
 }
+
+export default Pagination;
 
 import './index.styl'

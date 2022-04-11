@@ -6,7 +6,6 @@ import OutsideClick from '../../hoc/OutsideClick';
 
 import { CloseIcon } from '../../assets/icons';
 
-export default
 @portal({ className: '_Modal__Overlay' })
 class Modal extends React.Component {
 	static defaultProps = {
@@ -43,5 +42,7 @@ class Modal extends React.Component {
 		);
 	}
 }
+
+export default Modal;
 
 import './index.styl';
