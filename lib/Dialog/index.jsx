@@ -6,7 +6,6 @@ import Group from '../Group';
 
 import withClassName from '../../hoc/withClassName';
 
-export default
 @withClassName('_Dialog')
 class Dialog extends React.Component {
 	handleConfirm = () => {
@@ -56,5 +55,7 @@ export function dialog(text, props = {}) {
 			document.body.removeChild($node);
 		});
 }
+
+export default Dialog;
 
 import './index.styl';

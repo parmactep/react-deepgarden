@@ -1,39 +1,39 @@
-export Grid from './lib/Grid';
+export { default as Grid } from './lib/Grid';
 
-export Form from './lib/Form';
+export { default as Form } from './lib/Form';
 
-export Button from './lib/Button';
+export { default as Button } from './lib/Button';
 
-export Group from './lib/Group';
+export { default as Group } from './lib/Group';
 
-export Badge from './lib/Badge';
+export { default as Badge } from './lib/Badge';
 
-export Table from './lib/Table';
+export { default as Table } from './lib/Table';
 
-export Options from './lib/Options';
-export Menu from './lib/Menu';
-export Nav from './lib/Nav';
+export { default as Options } from './lib/Options';
+export { default as Menu } from './lib/Menu';
+export { default as Nav } from './lib/Nav';
 
-export DropDown from './lib/DropDown';
-export withDropDown from './lib/DropDown/withDropDown';
+export { default as DropDown } from './lib/DropDown';
+export { default as withDropDown } from './lib/DropDown/withDropDown';
 
-export Tabs from './lib/Tabs';
+export { default as Tabs } from './lib/Tabs';
 
-export Modal from './lib/Modal';
+export { default as Modal } from './lib/Modal';
 
-export Dialog from './lib/Dialog';
+export { default as Dialog } from './lib/Dialog';
 export { dialog } from './lib/Dialog';
 
-export Toast from './lib/Toast';
-export toast from './lib/Toast/toast';
+export { default as Toast } from './lib/Toast';
+export { default as toast } from './lib/Toast/toast';
 
-export Preloader from './lib/Preloader';
-export LoadingBar from './lib/LoadingBar';
-export Alert from './lib/Alert';
+export { default as Preloader } from './lib/Preloader';
+export { default as LoadingBar } from './lib/LoadingBar';
+export { default as Alert } from './lib/Alert';
 
-export Pagination from './lib/Pagination';
-export AsyncButton from './lib/AsyncButton';
+export { default as Pagination } from './lib/Pagination';
+export { default as AsyncButton } from './lib/AsyncButton';
 
-export withClassName from './hoc/withClassName';
-export OutsideClick from './hoc/OutsideClick';
+export { default as withClassName } from './hoc/withClassName';
+export { default as OutsideClick } from './hoc/OutsideClick';
 
