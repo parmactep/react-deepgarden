@@ -56,6 +56,17 @@ export default class Table extends React.Component {
 					</div>
 					<div className="_Table__Body">
 						{this.props.data.map(this.renderRow)}
+						{this.columns.some(column => !!column.summary) && (
+							<div className="_Table__Row _Table__Row--Summary">
+								{this.columns.map((column, columnKey) => {
+									return (
+										<div className="_Table__Cell" key={columnKey}>
+											{column.summary}
+										</div>
+									);
+								})}
+							</div>
+						)}
 					</div>
 				</div>
 				{children}
