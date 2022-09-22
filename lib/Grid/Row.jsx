@@ -1,9 +1,10 @@
 import React from 'react';
+import classNames from 'classnames';
 
-export default (props) => {
+export default ({ className, children }) => {
 	return (
-		<div className="_Grid__Row">
-			{props.children}
+		<div className={classNames('_Grid__Row', className)}>
+			{children}
 		</div>
 	);
 };
