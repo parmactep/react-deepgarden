@@ -10,4 +10,6 @@ const Column = ({ width, children, className }) => (
 	</div>
 );
 
+Column.displayName = 'Table.Column';
+
 export default Column;
