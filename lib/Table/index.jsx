@@ -27,9 +27,13 @@ export default class Table extends React.Component {
 			>
 				{this.columns.map((column, columnKey) => {
 					return (
-						<div className="_Table__Cell" key={columnKey}>
-							{typeof column.children === 'function' ? column.children(data, rowKey, columnKey) : column.children}
-						</div>
+						<Cell
+							{...column}
+							rowKey={rowKey}
+							columnKey={columnKey}
+							key={columnKey}
+							data={data}
+						/>
 					);
 				})}
 			</div>
@@ -41,7 +45,7 @@ export default class Table extends React.Component {
 		React.Children.forEach(
 			this.props.children,
 			(child) => {
-				if (child && child.type === Column) {
+				if (child && child.type.displayName === 'Table.Column') {
 					this.columns[this.columns.length] = child.props;
 				} else {
 					children[children.length] = child;
