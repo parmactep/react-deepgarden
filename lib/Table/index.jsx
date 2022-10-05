@@ -33,6 +33,7 @@ export default class Table extends React.Component {
 							columnKey={columnKey}
 							key={columnKey}
 							data={data}
+							render={this.props.renderCell}
 						/>
 					);
 				})}
