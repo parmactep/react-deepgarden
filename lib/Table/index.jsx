@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { observer, Observer } from 'mobx-react';
 
 import Body from './Table';
 import Column from './Column';
