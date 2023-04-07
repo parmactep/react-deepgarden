@@ -8,6 +8,7 @@ const DIRECTION_CLASS = {
 	top: 'Top',
 	bottom: 'Bottom',
 	left_bottom: 'LeftBottom',
+	left_top: 'LeftTop',
 };
 
 export default class DropDown extends React.Component {
