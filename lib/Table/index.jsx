@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import { observer, Observer } from 'mobx-react';
 
 import Body from './Table';
 import Column from './Column';
@@ -26,18 +25,16 @@ export default class Table extends React.Component {
 				onClick={this.props.onRowClick && this.handleRowClick}
 				data-key={rowKey}
 			>
-				{this.columns.map((column, columnKey) => {
-					return (
-						<Cell
-							{...column}
-							rowKey={rowKey}
-							columnKey={columnKey}
-							key={columnKey}
-							data={data}
-							render={this.props.renderCell}
-						/>
-					);
-				})}
+				{this.columns.map((column, columnKey) => (
+					<Cell
+						{...column}
+						rowKey={rowKey}
+						columnKey={columnKey}
+						key={columnKey}
+						data={data}
+						render={this.props.renderCell}
+					/>
+				))}
 			</div>
 		);
 	};
@@ -62,7 +59,7 @@ export default class Table extends React.Component {
 					</div>
 					<div className="_Table__Body">
 						{this.props.data.map(this.renderRow)}
-						{this.columns.some(column => !!column.summary) && (
+						{this.columns.some((column) => !!column.summary) && (
 							<div className="_Table__Row _Table__Row--Summary">
 								{this.columns.map((column, columnKey) => {
 									return (

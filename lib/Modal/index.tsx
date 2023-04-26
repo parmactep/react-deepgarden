@@ -6,8 +6,18 @@ import OutsideClick from '../../hoc/OutsideClick';
 
 import { CloseIcon } from '../../assets/icons';
 
+interface IModalProps {
+	header: JSX.Element;
+	footer: JSX.Element;
+	onClose: () => void;
+	className?: string;
+	closeButton?: boolean;
+	closeOnClickOutside?: boolean;
+}
+
+// @ts-ignore 	// @TODO: TS
 @portal({ className: '_Modal__Overlay' })
-class Modal extends React.Component {
+class Modal extends React.Component<IModalProps> {
 	static defaultProps = {
 		onClose: () => {},
 	};

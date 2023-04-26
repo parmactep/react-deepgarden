@@ -3,7 +3,15 @@ import classNames from 'classnames';
 
 import withClassName from '../../hoc/withClassName';
 
-function Button({ _ghost, ...props }) {
+interface IButtonProps {
+	_ghost: boolean;
+	href: string;
+	disabled: boolean;
+	children: React.ReactNode;
+	[x: string]: any;
+}
+
+function Button({ _ghost, ...props }: IButtonProps) {
 	const Component = !!props.href ? 'a' : 'button';
 	if (props.disabled) {
 		delete props.onClick;

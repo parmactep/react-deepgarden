@@ -9,31 +9,17 @@ import { portal } from '../../hoc/portal';
 
 const $node = document.createElement('div'); // @TODO: Test browser support
 
-let toasts = new Map();
-
-@portal({
-	className: '_Toast__Overlay',
-})
+const toasts = new Map();
+// @ts-ignore 	// @TODO: TS
+@portal({ className: '_Toast__Overlay' })
 class Toasts extends React.Component {
 	render() {
+		// @ts-ignore 	// @TODO: TS
 		return [...toasts.keys()].map((toast, key) => <Toast key={key} {...toast} />);
 	}
 }
 
-export default function toast({ timeout = DEFAULT_TIMEOUT, ...props }) {
-
-	toasts.set(props, true);
-
-	setTimeout(() => removeToast(props), timeout);
-
-	ReactDOM.render(
-		<Toasts />,
-		$node,
-	);
-}
-
-function removeToast(props) {
-
+function removeToast(props: {[x: string]: any}) {
 	toasts.delete(props);
 
 	if (toasts.size) {
@@ -44,4 +30,15 @@ function removeToast(props) {
 	} else {
 		ReactDOM.unmountComponentAtNode($node);
 	}
+}
+
+export default function toast({ timeout = DEFAULT_TIMEOUT, ...props }) {
+	toasts.set(props, true);
+
+	setTimeout(() => removeToast(props), timeout);
+
+	ReactDOM.render(
+		<Toasts />,
+		$node,
+	);
 }

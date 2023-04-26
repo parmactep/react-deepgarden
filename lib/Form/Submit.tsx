@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import classNames from 'classnames';
 
@@ -5,7 +6,13 @@ import Preloader from '../Preloader';
 
 import Context from './Context';
 
-export default class Form extends React.Component {
+interface ISubmitProps {
+	className: string;
+	pending: boolean;
+	children: React.ReactNode;
+}
+
+export default class Form extends React.Component<ISubmitProps> {
 	static contextType = Context;
 	render() {
 		return (

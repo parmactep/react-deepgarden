@@ -1,13 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const Tab = (props) => {
-	return (
-		<div className="_Tabs__Tab">
-			{props.children}
-		</div>
-	);
-};
+const Tab = (props) => (
+	<div className="_Tabs__Tab">
+		{props.children}
+	</div>
+);
 
 Tab.displayName = 'Tab';
 
@@ -26,12 +24,11 @@ export default class Tabs extends React.Component {
 		this.props.onChange && this.props.onChange(key);
 	};
 	renderControl = (child, key) => {
-		if (!child.type || child.type.displayName !== 'Tab')
-			return;
+		if (!child.type || child.type.displayName !== 'Tab') return;
 		return (
 			<div
 				key={key}
-				className={classNames('_Tabs__Title', {'_Tabs__Title--Active': key === this.state.active})}
+				className={classNames('_Tabs__Title', { '_Tabs__Title--Active': key === this.state.active })}
 				data-key={key}
 				onClick={this.handleChange}
 			>
@@ -40,8 +37,7 @@ export default class Tabs extends React.Component {
 		);
 	};
 	renderChildren = (child, key) => {
-		if (!child.type || child.type.displayName !== 'Tab' || key === this.state.active)
-			return true;
+		if (!child.type || child.type.displayName !== 'Tab' || key === this.state.active) return true;
 	};
 	render() {
 		const children = React.Children.toArray(this.props.children);

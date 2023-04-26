@@ -2,8 +2,13 @@ import React from 'react';
 
 import DropDown from './index';
 
-export default function withDropDown(Component) {
-	return class extends React.Component {
+type IWithDropDownProps = {
+	dropDown: React.ReactNode;
+	children: React.ReactNode;
+}
+
+export default function withDropDown(Component: React.ComponentType<any>) {
+	return class extends React.Component<IWithDropDownProps> {
 		state = {
 			showDropDown: false,
 		};

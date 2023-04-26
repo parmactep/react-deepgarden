@@ -4,18 +4,23 @@ import classNames from 'classnames';
 
 import OnClickOutside from '../../hoc/OutsideClick';
 
-const DIRECTION_CLASS = {
+const DIRECTION_CLASS: Record<string, string> = {
 	top: 'Top',
 	bottom: 'Bottom',
 	left_bottom: 'LeftBottom',
 	left_top: 'LeftTop',
 };
-
-export default class DropDown extends React.Component {
+interface IDropDownProps {
+	direction?: string;
+	className?: string;
+	onClose: (e: Event) => void;
+}
+export default class DropDown extends React.Component<IDropDownProps> {
 	static defaultProps = {
 		direction: 'bottom',
+		className: '',
 	};
-	handleClickOutside = (e) => {
+	handleClickOutside = (e: Event) => {
 		this.props.onClose && this.props.onClose(e);
 	};
 	render() {

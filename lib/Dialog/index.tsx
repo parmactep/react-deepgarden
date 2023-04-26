@@ -6,8 +6,19 @@ import Group from '../Group';
 
 import withClassName from '../../hoc/withClassName';
 
+interface IDialogProps {
+	onConfirm: (value?: any) => Promise<void> | void;
+	onClose: (reason?: any) => void;
+	title?: string;
+	className?: string;
+	withCancel?: boolean;
+	cancelText?: string;
+	children: React.ReactNode;
+}
+
+// @ts-ignore 	// @TODO: TS
 @withClassName('_Dialog')
-class Dialog extends React.Component {
+class Dialog extends React.Component<IDialogProps> {
 	handleConfirm = () => {
 		this.props.onConfirm && this.props.onConfirm();
 	};
@@ -40,7 +51,7 @@ class Dialog extends React.Component {
 	}
 }
 
-export function dialog(text, props = {}) {
+export function dialog(text: string, props = {}) {
 	const $node = document.createElement('div');
 	document.body.appendChild($node);
 

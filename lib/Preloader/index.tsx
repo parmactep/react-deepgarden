@@ -1,7 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export default function (props) {
+interface IPreloaderProps {
+	className?: string;
+}
+
+export default function (props: IPreloaderProps) {
 	return <div className={classNames('_Preloader', props.className)} />;
 }
 
