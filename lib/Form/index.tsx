@@ -67,7 +67,7 @@ export default class FormContext extends React.Component<IFormContextProps, IFor
 			errors: this.props.validate && this.props.validate(this.state.values) || {},
 		});
 	}
-	handleSubmit = (e: any) => {
+	handleSubmit = (e: Event) => {
 		e && e.preventDefault();
 		this.setState({
 			isDirty: false,

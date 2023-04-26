@@ -11,7 +11,7 @@ import './index.styl';
 interface IAlertProps {
 	type: string;
 	className: string;
-	[x: string]: any;
+	children: React.ReactNode;
 }
 
 const Alert = (props: IAlertProps) => (
