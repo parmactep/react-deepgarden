@@ -6,22 +6,20 @@ export default class extends React.Component {
 		options: [],
 	}
 	handleOption = (e) => {
-		const key = e.currentTarget.dataset.key;
-		const value = this.props.options[key].value;
+		const { key } = e.currentTarget.dataset;
+		const { value } = this.props.options[key];
 		this.props.onSelect && this.props.onSelect(value);
 	}
-	renderOption = (option, key) => {
-		return (
-			<div
-				key={key}
-				data-key={key}
-				onClick={this.handleOption}
-				className={classNames('_Options__Option', { '_Options__Option--Selected': option.value === this.props.value })}
-			>
-				{option.label}
-			</div>
-		);
-	}
+	renderOption = (option, key) => (
+		<div
+			key={key}
+			data-key={key}
+			onClick={this.handleOption}
+			className={classNames('_Options__Option', { '_Options__Option--Selected': option.value === this.props.value })}
+		>
+			{option.label}
+		</div>
+	)
 	render() {
 		return (
 			<div className="_Options">
