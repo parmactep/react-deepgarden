@@ -1,7 +1,20 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const Tab = (props) => (
+interface ITabProps {
+	children: React.ReactNode;
+}
+
+interface ITabsProps {
+	onChange?: (key: number) => void;
+	tabs: any[];
+}
+
+interface ITabsState {
+	active: number;
+}
+
+const Tab = (props: ITabProps) => (
 	<div className="_Tabs__Tab">
 		{props.children}
 	</div>
@@ -9,21 +22,22 @@ const Tab = (props) => (
 
 Tab.displayName = 'Tab';
 
-export default class Tabs extends React.Component {
-	static defaultProps = {
+export default class Tabs extends React.Component<ITabsProps, ITabsState> {
+	static defaultProps: ITabsProps = {
 		tabs: [],
 	};
-	state = {
+	static Tab: typeof Tab;
+	state: ITabsState = {
 		active: 0,
 	};
-	handleChange = (e) => {
+	handleChange = (e: any) => {
 		const key = Number(e.currentTarget.dataset.key);
 		this.setState({
 			active: key,
 		});
 		this.props.onChange && this.props.onChange(key);
 	};
-	renderControl = (child, key) => {
+	renderControl = (child: any, key: number) => {
 		if (!child.type || child.type.displayName !== 'Tab') return;
 		return (
 			<div
@@ -36,7 +50,7 @@ export default class Tabs extends React.Component {
 			</div>
 		);
 	};
-	renderChildren = (child, key) => {
+	renderChildren = (child: any, key: number) => {
 		if (!child.type || child.type.displayName !== 'Tab' || key === this.state.active) return true;
 	};
 	render() {

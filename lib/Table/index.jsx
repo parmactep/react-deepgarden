@@ -17,27 +17,25 @@ export default class Table extends React.Component {
 		const { title, ...props } = column;
 		return <Column key={key} {...props}>{column.title}</Column>;
 	};
-	renderRow = (data, rowKey) => {
-		return (
-			<div
-				className="_Table__Row"
-				key={rowKey}
-				onClick={this.props.onRowClick && this.handleRowClick}
-				data-key={rowKey}
-			>
-				{this.columns.map((column, columnKey) => (
-					<Cell
-						{...column}
-						rowKey={rowKey}
-						columnKey={columnKey}
-						key={columnKey}
-						data={data}
-						render={this.props.renderCell}
-					/>
-				))}
-			</div>
-		);
-	};
+	renderRow = (data, rowKey) => (
+		<div
+			className="_Table__Row"
+			key={rowKey}
+			onClick={this.props.onRowClick && this.handleRowClick}
+			data-key={rowKey}
+		>
+			{this.columns.map((column, columnKey) => (
+				<Cell
+					{...column}
+					rowKey={rowKey}
+					columnKey={columnKey}
+					key={columnKey}
+					data={data}
+					render={this.props.renderCell}
+				/>
+			))}
+		</div>
+	);
 	render() { //   @TODO: Hard rendering
 		this.columns = [];
 		const children = [];
@@ -61,13 +59,11 @@ export default class Table extends React.Component {
 						{this.props.data.map(this.renderRow)}
 						{this.columns.some((column) => !!column.summary) && (
 							<div className="_Table__Row _Table__Row--Summary">
-								{this.columns.map((column, columnKey) => {
-									return (
-										<div className="_Table__Cell" key={columnKey}>
-											{column.summary}
-										</div>
-									);
-								})}
+								{this.columns.map((column, columnKey) => (
+									<div className="_Table__Cell" key={columnKey}>
+										{column.summary}
+									</div>
+								))}
 							</div>
 						)}
 					</div>

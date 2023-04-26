@@ -1,16 +1,27 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export default class extends React.Component {
-	static defaultProps = {
+type IOptions = {
+	label: React.ReactNode;
+	value: () => void;
+}
+
+interface IOptionsProps {
+	options: IOptions[];
+	onSelect?: (value: any) => void;
+	value?: () => void;
+}
+
+export default class extends React.Component<IOptionsProps> {
+	static defaultProps: IOptionsProps = {
 		options: [],
 	}
-	handleOption = (e) => {
+	handleOption = (e: any) => {
 		const { key } = e.currentTarget.dataset;
 		const { value } = this.props.options[key];
 		this.props.onSelect && this.props.onSelect(value);
 	}
-	renderOption = (option, key) => (
+	renderOption = (option: IOptions, key: number) => (
 		<div
 			key={key}
 			data-key={key}
