@@ -8,21 +8,21 @@ const alignClasses: Record<string, string> = {
 };
 
 interface IColProps {
-	className: string;
-	col: string;
-	offset: string;
-	align: 'start' | 'end' | 'center';
-	children: React.ReactNode;
+	className?: string;
+	col?: number;
+	offset?: number;
+	align?: 'start' | 'end' | 'center';
+	children?: React.ReactNode;
 }
 
-export default (props: IColProps) => {
-	const colClass = props.col ? `_Grid__Col--${props.col}` : '';
-	const offsetClass = props.offset ? `'_Grid__Col--Offset' ${props.offset}` : '';
-	const alignClass = props.align ? alignClasses[props.align] : '';
+export default ({ className, col, offset, align, children }: IColProps) => {
+	const colClass = col ? `_Grid__Col--${col}` : '';
+	const offsetClass = offset ? `'_Grid__Col--Offset' ${offset}` : '';
+	const alignClass = align ? alignClasses[align] : '';
 
 	return (
-		<div className={classNames('_Grid__Col', colClass, offsetClass, alignClass, props.className)}>
-			{props.children}
+		<div className={classNames('_Grid__Col', colClass, offsetClass, alignClass, className)}>
+			{children}
 		</div>
 	);
 };

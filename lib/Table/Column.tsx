@@ -1,9 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 
-type IColumnProps = {
-	className: string;
-	width: string | number;
+interface IColumnProps {
+	className?: string;
+	width?: string | number;
+	title?: React.ReactNode;
 	children: React.ReactNode;
 }
 

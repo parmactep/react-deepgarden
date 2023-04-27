@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 interface IRowProps {
-	className: string;
+	className?: string;
 	children: React.ReactNode;
 }
 

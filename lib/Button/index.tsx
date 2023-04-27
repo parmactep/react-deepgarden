@@ -4,9 +4,11 @@ import classNames from 'classnames';
 import withClassName from '../../hoc/withClassName';
 
 interface IButtonProps {
-	_ghost: boolean;
-	href: string;
-	disabled: boolean;
+	_ghost?: boolean;
+	className?: string;
+	href?: string;
+	disabled?: boolean;
+	onClick?: () => void;
 	children: React.ReactNode;
 	[x: string]: any;
 }

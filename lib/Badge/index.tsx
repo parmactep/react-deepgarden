@@ -2,7 +2,7 @@ import React from 'react';
 
 import withClassName from '../../hoc/withClassName';
 
-type IBadgeProps = {
+interface IBadgeProps {
 	className: string;
 	children: React.ReactNode;
 }

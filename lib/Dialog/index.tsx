@@ -51,7 +51,7 @@ class Dialog extends React.Component<IDialogProps> {
 	}
 }
 
-export function dialog(text: string, props = {}) {
+export function dialog(text: React.ReactNode, props = {}) {
 	const $node = document.createElement('div');
 	document.body.appendChild($node);
 
