@@ -1,9 +1,18 @@
-import React from 'react';
+import React, {ReactNode, ComponentType, FC} from 'react';
 import classNames from 'classnames';
 
 import withClassName from '../../hoc/withClassName';
 
-function Button({ _ghost, ...props }) {
+export interface IButtonProps {
+	_ghost?: boolean;
+	href?: string;
+	disabled?: boolean;
+	onClick?: () => void;
+	className?: string;
+	children?: ReactNode;
+}
+
+function Button({ _ghost, ...props }: IButtonProps) {
 	const Component = !!props.href ? 'a' : 'button';
 	if (props.disabled) {
 		delete props.onClick;
