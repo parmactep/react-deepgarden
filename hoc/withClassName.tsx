@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import classNames from 'classnames';
 
 const TYPES: Record<string, string> = {
@@ -15,22 +15,26 @@ const SIZES: Record<string, string> = {
 	biggest: '--Biggest',
 };
 
-interface IWithClassName {
+interface IWithClassNameProps {
 	_type?: string;
 	_size?: string;
-	[x: string]: any;
+	className?: string;
 }
 
-export default function withClassName(className: string) {
-	return (Component: React.ComponentType<any>) => ({ _type = '', _size = '', ...props }: IWithClassName) => (
-		<Component
-			{...props}
-			className={classNames(
-				className,
-				TYPES[_type] && className + TYPES[_type],
-				SIZES[_size] && className + SIZES[_size],
-				props.className,
-			)}
-		/>
-	);
+export default function withClassName(injectedClassName: string) {
+	return function hocWithClassName<ComponentProps>(Component: ComponentType<ComponentProps>) {
+		return function ComponentWithClassName({ _type, _size, className, ...props }: ComponentProps & IWithClassNameProps) {
+			return (
+				<Component
+					{...props as ComponentProps}
+					className={classNames(
+						injectedClassName,
+						TYPES[_type] && className + TYPES[_type],
+						SIZES[_size] && className + SIZES[_size],
+						className,
+					)}
+				/>
+			)
+		}
+	}
 }

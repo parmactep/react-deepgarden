@@ -3,29 +3,20 @@ import classNames from 'classnames';
 
 import Button from '../Button';
 
-interface IAsyncButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  pending: boolean;
+interface IAsyncButtonProps {
+	pending?: boolean;
+	onClick?: () => void;
 }
 
-const AsyncButton: React.FC<IAsyncButtonProps> = ({ pending, onClick, className, ...props }) => {
-  const handleClick = React.useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      if (!pending && onClick) {
-        onClick(event);
-      }
-    },
-    [pending, onClick]
-  );
-
-  return (
-    <Button
-      className={classNames(className, '_AsyncButton', { '_AsyncButton--Pending': pending })}
-      onClick={handleClick}
-      {...props}
-    />
-  );
-};
-
-export default AsyncButton;
+export default function AsyncButton({ pending = false, onClick, ...props }: IAsyncButtonProps) {
+	return (
+		<Button
+			className={classNames('_AsyncButton', { '_AsyncButton--Pending': pending })}
+			{...props}
+			onClick={pending ? () => {}
+				: onClick}
+		/>
+	);
+}
 
 import './index.styl';

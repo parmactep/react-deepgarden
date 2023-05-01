@@ -1,9 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-type ITableProps = {
-	className: string;
-	[x: string]: any
+interface ITableProps {
+	className?: string;
 }
 
 const Table = ({

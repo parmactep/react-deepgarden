@@ -1,16 +1,15 @@
-import React from 'react';
+import React, {ReactNode, ComponentType, FC} from 'react';
 import classNames from 'classnames';
 
 import withClassName from '../../hoc/withClassName';
 
-interface IButtonProps {
+export interface IButtonProps {
 	_ghost?: boolean;
-	className?: string;
 	href?: string;
 	disabled?: boolean;
 	onClick?: () => void;
-	children: React.ReactNode;
-	[x: string]: any;
+	className?: string;
+	children?: ReactNode;
 }
 
 function Button({ _ghost, ...props }: IButtonProps) {
