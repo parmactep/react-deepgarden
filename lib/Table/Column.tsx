@@ -1,22 +1,17 @@
 import React from 'react';
 import classNames from 'classnames';
 
+
 interface IColumnProps {
-	className?: string;
-	width?: string | number;
-	title?: React.ReactNode;
-	children: React.ReactNode;
+  className?: string;
+  width?: string | number;
+  title?: React.ReactNode;
 }
 
-const Column = ({ width, children, className }: IColumnProps) => (
-	<div
-		className={classNames('_Table__Column', className)}
-		style={width && { width }}
-	>
-		{children}
-	</div>
+const Column: FC<IColumnProps> = ({ width, children, className }) => (
+  <div className={classNames('_Table__Column', className)} style={{ width }}>
+    {children}
+  </div>
 );
-
-Column.displayName = 'Table.Column';
 
 export default Column;
