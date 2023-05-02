@@ -24,7 +24,7 @@ function OutsideClick({ onClickOutside, ...props }: IOutsideClickProps) {
 	}, []);
 
 	return (
-		<div style={{'display': 'contents'}} ref={ref} {...props} />
+		<div ref={ref} {...props} />
 	);
 }
 
