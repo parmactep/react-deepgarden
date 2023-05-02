@@ -1,11 +1,10 @@
 import React, { useEffect, ReactElement, useRef } from 'react';
 
 interface IOutsideClickProps {
-	children?: ReactElement;
 	onClickOutside?: (e: Event) => void;
 }
 
-function OutsideClick({ children, onClickOutside }: IOutsideClickProps) {
+function OutsideClick({ onClickOutside, ...props }: IOutsideClickProps) {
 
 	const ref = useRef<HTMLDivElement>();
 
@@ -25,9 +24,7 @@ function OutsideClick({ children, onClickOutside }: IOutsideClickProps) {
 	}, []);
 
 	return (
-		<div ref={ref}>
-			{children}
-		</div>
+		<div ref={ref} {...props} />
 	);
 }
 
