@@ -16,11 +16,11 @@ const TYPES: Record<Type, string> = {
 	smaller: '--Smaller',
 	bigger: '--Bigger',
 	biggest: '--Biggest',
-  };
-  
-  interface IWithClassNameProps {
-	_type?: Type;
-	_size?: Size;
+};
+
+interface IWithClassNameProps {
+	_type?: keyof typeof TYPES;
+	_size?: keyof typeof SIZES;
 	className?: string;
   }
 
@@ -32,8 +32,8 @@ export default function withClassName(injectedClassName: string) {
 					{...props as ComponentProps}
 					className={classNames(
 						injectedClassName,
-						_type && TYPES[_type] && injectedClassName + TYPES[_type],
-						_size && SIZES[_size] && injectedClassName + SIZES[_size],
+						TYPES[_type] && injectedClassName + TYPES[_type],
+						SIZES[_size] && injectedClassName + SIZES[_size],
 						className,
 					)}
 				/>
