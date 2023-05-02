@@ -31,23 +31,24 @@ function Modal({
 	};
 
 	return (
-		<OutsideClick onClickOutside={handleClickOutside}>
-			<div className={classNames('_Modal', className)}>
-				{header && (
-					<div className="_Modal__Header">
-						{header}
-					</div>
-				)}
-				<div className="_Modal__Body">
-					{children}
+		<OutsideClick
+			onClickOutside={handleClickOutside}
+			className={classNames('_Modal', className)}
+		>
+			{header && (
+				<div className="_Modal__Header">
+					{header}
 				</div>
-				{footer && (
-					<div className="_Modal__Footer">
-						{footer}
-					</div>
-				)}
-				{closeButton && <CloseIcon className="_Modal__Close" onClick={onClose} />}
+			)}
+			<div className="_Modal__Body">
+				{children}
 			</div>
+			{footer && (
+				<div className="_Modal__Footer">
+					{footer}
+				</div>
+			)}
+			{closeButton && <CloseIcon className="_Modal__Close" onClick={onClose} />}
 		</OutsideClick>
 	);
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import classNames from 'classnames';
 
-import OnClickOutside from '../../hoc/OutsideClick';
+import OutsideClick from '../../hoc/OutsideClick';
 
 const DIRECTION_CLASS: Record<string, string> = {
 	top: 'Top',
@@ -13,14 +13,14 @@ const DIRECTION_CLASS: Record<string, string> = {
 
 function DropDown() {
 	return (
-		<OnClickOutside
+		<OutsideClick
 			className={classNames('_DropDown', `_DropDown--${DIRECTION_CLASS[this.props.direction]}`, this.props.className)}
 			onClickOutside={this.handleClickOutside}
 		>
 			<div className="_DropDown__Body">
 				{this.props.children}
 			</div>
-		</OnClickOutside>
+		</OutsideClick>
 	);
 }
 
