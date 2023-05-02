@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import classNames from 'classnames';
 
@@ -9,31 +9,38 @@ const DIRECTION_CLASS: Record<string, string> = {
 	bottom: 'Bottom',
 	left_bottom: 'LeftBottom',
 	left_top: 'LeftTop',
-};
+}
+
+
 interface IDropDownProps {
-	direction?: string;
+	direction?:  keyof typeof DIRECTION_CLASS;
 	className?: string;
 	onClose: (e: Event) => void;
+	children: ReactNode;
 }
-export default class DropDown extends React.Component<IDropDownProps> {
-	static defaultProps = {
-		direction: 'bottom',
-		className: '',
+
+function DropDown({
+	direction = 'bottom',
+	className = '',
+	onClose,
+	children
+}: IDropDownProps) {
+	const handleClickOutside = (e: Event) => {
+		onClose && onClose(e);
 	};
-	handleClickOutside = (e: Event) => {
-		this.props.onClose && this.props.onClose(e);
-	};
-	render() {
-		return (
-			<div className={classNames('_DropDown', `_DropDown--${DIRECTION_CLASS[this.props.direction]}`, this.props.className)}>
-				<OnClickOutside onClickOutside={this.handleClickOutside}>
-					<div className="_DropDown__Body">
-						{this.props.children}
-					</div>
-				</OnClickOutside>
+
+	return (
+		<OnClickOutside
+			className={classNames('_DropDown', `_DropDown--${DIRECTION_CLASS[direction]}`, className)}
+			onClickOutside={handleClickOutside}
+		>
+			<div className="_DropDown__Body">
+				{children}
 			</div>
-		);
-	}
+		</OnClickOutside>
+	);
 }
+
+export default DropDown;
 
 import './index.styl';

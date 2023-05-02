@@ -1,38 +1,31 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
-interface IOutsideClickProps {
-	onClickOutside: (e: Event) => void;
+interface IOutsideClickProps extends React.HTMLAttributes<HTMLDivElement> {
+	onClickOutside?: (e: Event) => void;
 }
 
-interface IOutsideClickState {
-	node?: HTMLDivElement | null;
-}
+function OutsideClick({ onClickOutside, ...props }: IOutsideClickProps) {
 
-export default class OutsideClick extends React.Component<IOutsideClickProps> {
-	nodeRef = React.createRef<HTMLDivElement>();
-	state: IOutsideClickState = {
-		node: null,
-	};
-	componentDidMount() {
-		this.setState({
-			node: this.nodeRef.current,
-		});
-		document.addEventListener('click', this.handleClickOutside);
-	}
-	componentWillUnmount() {
-		document.removeEventListener('click', this.handleClickOutside);
-	}
-	handleClickOutside = (e: any) => {
-		if (this.state.node.contains(e.target)) {
-			return false;
+	const ref = useRef<HTMLDivElement>();
+
+	useEffect(() => {
+
+		const handleClickOutside = (e: Event) => {
+			if (ref.current.contains(e.target as HTMLElement)) {
+				return false;
+			}
+			onClickOutside && onClickOutside(e);
+		};
+		document.addEventListener('click', handleClickOutside);
+
+		return () => {
+			document.removeEventListener('click', handleClickOutside);
 		}
-		this.props.onClickOutside && this.props.onClickOutside(e);
-	};
-	render() {
-		return (
-			<div style={{ display: 'contents' }} ref={this.nodeRef}>
-				{this.props.children}
-			</div>
-		);
-	}
+	}, []);
+
+	return (
+		<div ref={ref} {...props} />
+	);
 }
+
+export default OutsideClick;

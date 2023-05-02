@@ -1,4 +1,4 @@
-import React, {ReactNode, ComponentType, FC} from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 
 import withClassName from '../../hoc/withClassName';

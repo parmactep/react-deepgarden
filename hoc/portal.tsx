@@ -1,36 +1,44 @@
-import React, { useState, useEffect, forwardRef, ComponentType } from 'react';
+import React, { useEffect, useState, forwardRef, ReactNode, ComponentType } from 'react';
 import ReactDOM from 'react-dom';
 
-interface IPortalProps {
+export interface IPortalProps {
 	className?: string;
+	children?: ReactNode;
 }
 
-export default function Portal({ className = '_Portal__Overlay', children }: React.PropsWithChildren<IPortalProps>) {
-	const [node, setNode] = useState<HTMLDivElement | null>(null);
+function Portal({ className = '_Portal__Overlay', children }: IPortalProps) {
+
+	const [mountedNode, setMountedNode] = useState<HTMLDivElement>();
 
 	useEffect(() => {
-		const newNode = document.createElement('div');
-		newNode.className = className;
-		setNode(newNode);
-		document.body.appendChild(newNode);
+		const node = document.createElement('div');
+		node.className = className;
+		document.body.appendChild(node);
+		setMountedNode(node);
+
 		return () => {
-			document.body.removeChild(newNode);
-		};
+			document.body.removeChild(node);
+		}
 	}, [className]);
 
-	if (!node) {
+	if (!mountedNode) {
 		return null;
 	}
 
-	return ReactDOM.createPortal(children, node);
+	return ReactDOM.createPortal(
+		children,
+		mountedNode,
+	);
 }
 
-export function portal(options: IPortalProps = {}) {
-	return function hocPortal<ComponentProps>(Component: ComponentType<ComponentProps>) {
-		return forwardRef((props: ComponentProps, ref: React.ReactNode) => (
-			<Portal {...options}>
-				<Component {...props} ref={ref} />
+export default Portal;
+
+export function portal(portalProps: IPortalProps = {}) {
+	return function<ComponentProps>(Component: ComponentType<ComponentProps>) {
+		return forwardRef((props: ComponentProps, ref) => (
+			<Portal {...portalProps}>
+				<Component {...props as ComponentProps} ref={ref} />
 			</Portal>
 		));
-	};
+	}
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import Button from '../Button';
+import Button, { IButtonProps } from '../Button';
 
-interface IAsyncButtonProps {
+interface IAsyncButtonProps extends IButtonProps {
 	pending?: boolean;
 	onClick?: () => void;
 }

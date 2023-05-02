@@ -1,13 +1,6 @@
-import React from 'react';
+import React, { HTMLProps } from 'react';
 
-interface ICloseIconProps {
-	className?: string;
-	onClick?: () => void;
-	[x: string]: any;
-}
-
-// eslint-disable-next-line
-export function CloseIcon(props: ICloseIconProps) {
+export function CloseIcon(props: HTMLProps<any>) {
 	return (
 		<svg
 			aria-hidden="true"
