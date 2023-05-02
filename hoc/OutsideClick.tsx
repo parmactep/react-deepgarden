@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-interface IOutsideClickProps {
+interface IOutsideClickProps extends React.HTMLAttributes<HTMLDivElement> {
 	onClickOutside?: (e: Event) => void;
 }
 
