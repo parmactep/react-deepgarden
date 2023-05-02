@@ -1,35 +1,27 @@
-import React from 'react';
+import React, { useState, ReactNode, ComponentProps } from 'react';
 
 import DropDown from './index';
 
-type IWithDropDownProps = {
-	dropDown: React.ReactNode;
-	children: React.ReactNode;
+export interface IWithDropDownProps extends ComponentProps<any>{
+	dropDown: ReactNode;
+	children: ReactNode;
 }
 
 export default function withDropDown(Component: React.ComponentType<any>) {
-	return class extends React.Component<IWithDropDownProps> {
-		state = {
-			showDropDown: false,
+	return ({dropDown, children, ...props}: IWithDropDownProps) => {
+		const [showDropDown, setShowDropDown] = useState(false);
+
+		const toggleDropDown = () => {
+			setShowDropDown(!showDropDown);
 		};
-		toggleDropDown = () => {
-			this.setState({
-				showDropDown: !this.state.showDropDown,
-			});
-		};
-		render() {
-			const { dropDown, children, ...props } = this.props;
-			return (
-				<Component {...props} onToggleDropDown={this.toggleDropDown}>
-					{children}
-					{this.state.showDropDown
-					&& (
-						<DropDown onClose={this.toggleDropDown}>
-							{dropDown}
-						</DropDown>
-					)}
-				</Component>
-			);
-		}
+		
+		return (
+			<Component {...props} onToggleDropDown={toggleDropDown}>
+				{children}
+				{showDropDown && (
+					<DropDown onClose={toggleDropDown}>{dropDown}</DropDown>
+				)}
+			</Component>
+		);
 	};
 }

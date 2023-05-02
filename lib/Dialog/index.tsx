@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 
 import Button from '../Button';
@@ -6,39 +6,47 @@ import Group from '../Group';
 
 import withClassName from '../../hoc/withClassName';
 
-interface IDialogProps {
+export interface IDialogProps {
 	onConfirm: (value?: any) => Promise<void> | void;
 	onClose: (reason?: any) => void;
 	title?: string;
 	className?: string;
 	withCancel?: boolean;
 	cancelText?: string;
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
-const Dialog = withClassName('_Toast')(({ ...props }: IDialogProps) => {
+const Dialog = withClassName('_Toast')(({
+	onConfirm,
+	onClose,
+	title,
+	className,
+	withCancel,
+	cancelText,
+	children,
+}: IDialogProps) => {
 	const handleConfirm = () => {
-		props.onConfirm && props.onConfirm();
+		onConfirm && onConfirm();
 	};
 	const handleClose = () => {
-		props.onClose && props.onClose();
+		onClose && onClose();
 	};
 
 	return (
 		<div className="_Dialog__Overlay">
-			<div className={props.className}>
+			<div className={className}>
 				{
 					<div className="_Dialog__Header">
-						{ `${props.title || 'Delete confirmation'}` }
+						{ `${title || 'Delete confirmation'}` }
 					</div>
 				}
 				<div className="_Dialog__Body">
-					{props.children}
+					{children}
 				</div>
 				<div className="_Dialog__Footer">
 					<Group>
 						{
-							props.withCancel && <Button _ghost onClick={handleClose}>{ props.cancelText || 'Cancel' }</Button>
+							withCancel && <Button _ghost onClick={handleClose}>{ cancelText || 'Cancel' }</Button>
 						}
 						<Button _type="success" onClick={handleConfirm}>Ok</Button>
 					</Group>
@@ -48,7 +56,7 @@ const Dialog = withClassName('_Toast')(({ ...props }: IDialogProps) => {
 	);
 });
 
-export function dialog(text: React.ReactNode, props = {}) {
+export function dialog(text: ReactNode, props = {}) {
 	const $node = document.createElement('div');
 	document.body.appendChild($node);
 

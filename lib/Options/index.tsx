@@ -1,43 +1,38 @@
-import React from 'react';
+import React, { ReactNode, SyntheticEvent } from 'react';
 import classNames from 'classnames';
 
 type IOptions = {
-	label: React.ReactNode;
+	label: ReactNode;
 	value: () => void;
 }
 
-interface IOptionsProps {
+export interface IOptionsProps {
 	options: IOptions[];
 	onSelect?: (value: any) => void;
 	value?: () => void;
 }
 
-export default class extends React.Component<IOptionsProps> {
-	static defaultProps: IOptionsProps = {
-		options: [],
-	}
-	handleOption = (e: any) => {
+export default function Options({ options = [], onSelect, value }: IOptionsProps) {
+	const handleOption = (e: SyntheticEvent<HTMLDivElement>) => {
 		const { key } = e.currentTarget.dataset;
-		const { value } = this.props.options[key];
-		this.props.onSelect && this.props.onSelect(value);
-	}
-	renderOption = (option: IOptions, key: number) => (
+		const selectedOption = options[Number(key)];
+		onSelect && onSelect(selectedOption.value);
+	};
+
+	const renderOption = (option: IOptions, key: number) => (
 		<div
 			key={key}
 			data-key={key}
-			onClick={this.handleOption}
-			className={classNames('_Options__Option', { '_Options__Option--Selected': option.value === this.props.value })}
+			onClick={handleOption}
+			className={classNames('_Options__Option', {
+				'_Options__Option--Selected': option.value === value,
+			})}
 		>
 			{option.label}
 		</div>
-	)
-	render() {
-		return (
-			<div className="_Options">
-				{this.props.options.map(this.renderOption)}
-			</div>
-		);
-	}
+	);
+
+	return <div className="_Options">{options.map(renderOption)}</div>;
 }
 
 import './index.styl';

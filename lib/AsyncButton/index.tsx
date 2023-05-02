@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import Button, { IButtonProps } from '../Button';
 
-interface IAsyncButtonProps extends IButtonProps {
+export interface IAsyncButtonProps extends IButtonProps {
 	pending?: boolean;
 	onClick?: () => void;
 }

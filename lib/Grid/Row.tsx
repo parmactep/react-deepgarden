@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 
-interface IRowProps {
+export interface IRowProps {
 	className?: string;
-	children: React.ReactNode;
+	children?: ReactNode;
 }
 
 export default ({ className, children }: IRowProps) => (

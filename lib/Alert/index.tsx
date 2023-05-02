@@ -1,6 +1,6 @@
 import React from 'react';
 
-import classNames from 'classnames';
+import classNames, { ReactNode } from 'classnames';
 
 const classes: Record<string, string> = {
 	error: '-Error',
@@ -8,10 +8,10 @@ const classes: Record<string, string> = {
 
 import './index.styl';
 
-interface IAlertProps {
+export interface IAlertProps {
 	type: string;
 	className: string;
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
 const Alert = (props: IAlertProps) => (

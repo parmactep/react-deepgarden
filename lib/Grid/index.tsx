@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 
 import Row from './Row';
@@ -6,10 +6,10 @@ import Col from './Col';
 
 import './index.styl';
 
-interface IGridProps {
+export interface IGridProps {
 	className?: string;
 	noHidden?: boolean;
-	children: React.ReactNode;
+	children?: ReactNode;
 }
 
 const Grid = ({ className, noHidden, children }: IGridProps) => (

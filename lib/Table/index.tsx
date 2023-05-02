@@ -8,7 +8,7 @@ import Row from './Row';
 
 import './index.styl';
 
-interface ITableProps {
+export interface ITableProps {
 	className?: string;
 	children?: ReactNode;
 	data?: any[];

@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 
 import Preloader from '../Preloader';
 
 import Context from './Context';
 
-interface ISubmitProps {
-	className: string;
-	pending: boolean;
-	children: React.ReactNode;
+export interface ISubmitProps {
+	className?: string;
+	pending?: boolean;
+	children?: ReactNode;
 }
 
 export default class Form extends React.Component<ISubmitProps> {

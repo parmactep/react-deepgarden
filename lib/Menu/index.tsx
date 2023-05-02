@@ -1,36 +1,28 @@
-import React from 'react';
+import React, { ReactNode, SyntheticEvent } from 'react';
 
 type IOptions = {
-	label: React.ReactNode;
+	label: ReactNode;
 	value: () => void
 }
 
-interface IMenuProps {
+export interface IMenuProps {
 	options?: IOptions[];
 	onSelect?: (callback: any) => void;
 }
 
-export default class Menu extends React.Component<IMenuProps> {
-	static defaultProps: IMenuProps = {
-		options: [],
-		onSelect: () => {},
-	};
-	handleSelect = (e: any) => {
-		const option = this.props.options[e.currentTarget.dataset.key];
-		this.props.onSelect(option.value);
-	};
-	renderOption = (option: IOptions, key: number) => (
-		<div className="_Menu__Option" key={key} data-key={key} onClick={this.handleSelect}>
+export default function Menu({ options = [], onSelect = () => {} }: IMenuProps) {
+	const handleSelect = (e: SyntheticEvent) => {
+		const option = options[e.currentTarget.dataset.key];
+		onSelect(option.value);
+	}
+
+	const renderOption = (option: IOptions, key: number) => (
+		<div className="_Menu__Option" key={key} data-key={key} onClick={handleSelect}>
 			{option.label}
 		</div>
 	);
-	render() {
-		return (
-			<div className="_Menu">
-				{this.props.options.map(this.renderOption)}
-			</div>
-		);
-	}
+	
+	return <div className="_Menu">{options.map(renderOption)}</div>;
 }
 
 import './index.styl';

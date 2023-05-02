@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { set } from 'lodash';
 
 import Context from './Context';
@@ -10,7 +10,7 @@ interface IFormContextProps {
 	initialValues: {[x: string]: any;};
 	validate?: (values: any) => {[x: string]: any;};
 	onSubmit: (values: any) => Promise<void> | void;
-	children?: React.ReactNode;
+	children?: ReactNode;
 }
 
 interface IFormContextState {

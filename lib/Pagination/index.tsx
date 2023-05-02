@@ -5,7 +5,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 import withClassName from '../../hoc/withClassName';
 
-interface IPaginationProps {
+export interface IPaginationProps {
 	from?: number,
 	to?: number,
 	total?: number,
@@ -13,13 +13,13 @@ interface IPaginationProps {
 	onChange: (val: number) => void
 }
 
-const Pagination: React.FC<IPaginationProps> = ({
+function Pagination({
 	from = 0,
 	to = 0,
 	total = 0,
 	className,
 	onChange,
-}: IPaginationProps) => {
+}: IPaginationProps) {
 	const handleNext = () => {
 		if (to < total && onChange) {
 			onChange(to + 1);

@@ -12,11 +12,11 @@ const DIRECTION_CLASS: Record<string, string> = {
 }
 
 
-interface IDropDownProps {
+export interface IDropDownProps {
 	direction?:  keyof typeof DIRECTION_CLASS;
 	className?: string;
-	onClose: (e: Event) => void;
-	children: ReactNode;
+	onClose?: (e: Event) => void;
+	children?: ReactNode;
 }
 
 function DropDown({

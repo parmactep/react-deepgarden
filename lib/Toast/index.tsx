@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import withClassName from '../../hoc/withClassName';
 
 interface IToastProps {
 	className: string;
 	title: string;
-	message: React.ReactNode;
+	message: ReactNode;
 }
 
 export default withClassName('_Toast')(

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 
 interface ITabProps {
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
 interface ITabsProps {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 
 const alignClasses: Record<string, string> = {
@@ -7,12 +7,12 @@ const alignClasses: Record<string, string> = {
 	center: '_Grid__Col--AlignCenter',
 };
 
-interface IColProps {
+export interface IColProps {
 	className?: string;
 	col?: number;
 	offset?: number;
 	align?: 'start' | 'end' | 'center';
-	children?: React.ReactNode;
+	children?: ReactNode;
 }
 
 export default ({ className, col, offset, align, children }: IColProps) => {

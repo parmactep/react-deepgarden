@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import withClassName from '../../hoc/withClassName';
 
-interface IBadgeProps {
+export interface IBadgeProps {
 	className: string;
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
 
-const Badge = (props: IBadgeProps) => (
-	<div className={props.className}>
-		{props.children}
+const Badge = ({ className,children }: IBadgeProps) => (
+	<div className={className}>
+		{children}
 	</div>
 );
 

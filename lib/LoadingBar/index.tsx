@@ -9,12 +9,12 @@ const statuses: Record<string, string> = {
 	done: '-Done',
 };
 
-interface ILoadingBarProps {
-	status: string;
+export interface ILoadingBarProps {
+	status: keyof typeof statuses;
 }
 
-export default (props: ILoadingBarProps) => (
-	<div className={classNames('_LoadingBar', statuses[props.status])}>
+export default ({ status }: ILoadingBarProps) => (
+	<div className={classNames('_LoadingBar', statuses[status])}>
 		<span className="_LoadingBar__Progress" />
 	</div>
 );

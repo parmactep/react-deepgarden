@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { get } from 'lodash';
 
 import Context from './Context';
 
-interface IFieldProps {
+export interface IFieldProps {
 	className: string;
 	name: string;
 	pending: boolean;
 	input: any;
 	onChange: (value: any) => void;
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
 export default class Field extends React.Component<IFieldProps> {
