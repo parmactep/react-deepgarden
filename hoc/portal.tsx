@@ -5,26 +5,21 @@ interface IPortalProps {
 	className?: string;
 }
 
-interface IPortalState {
-	node?: HTMLDivElement | null;
-}
-
-
 export default function Portal({ className = '_Portal__Overlay', children }: React.PropsWithChildren<IPortalProps>) {
 	const [node, setNode] = useState<HTMLDivElement | null>(null);
 
 	useEffect(() => {
-	const newNode = document.createElement('div');
-	newNode.className = className;
-	setNode(newNode);
-	document.body.appendChild(newNode);
-	return () => {
-		document.body.removeChild(newNode);
-	};
+		const newNode = document.createElement('div');
+		newNode.className = className;
+		setNode(newNode);
+		document.body.appendChild(newNode);
+		return () => {
+			document.body.removeChild(newNode);
+		};
 	}, [className]);
 
 	if (!node) {
-	return null;
+		return null;
 	}
 
 	return ReactDOM.createPortal(children, node);
