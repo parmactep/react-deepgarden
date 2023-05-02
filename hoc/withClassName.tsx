@@ -1,25 +1,28 @@
 import React, { ComponentType } from 'react';
 import classNames from 'classnames';
 
-const TYPES: Record<string, string> = {
-	'notice': '--Notice',
-	'success': '--Success',
-	'warning': '--Warning',
-	'danger': '--Danger',
-};
+type Type = 'notice' | 'success' | 'warning' | 'danger';
+type Size = 'smallest' | 'smaller' | 'bigger' | 'biggest';
 
-const SIZES: Record<string, string> = {
+const TYPES: Record<Type, string> = {
+	notice: '--Notice',
+	success: '--Success',
+	warning: '--Warning',
+	danger: '--Danger',
+  };
+  
+  const SIZES: Record<Size, string> = {
 	smallest: '--Smallest',
 	smaller: '--Smaller',
 	bigger: '--Bigger',
 	biggest: '--Biggest',
-};
-
-interface IWithClassNameProps {
-	_type?: string;
-	_size?: string;
+  };
+  
+  interface IWithClassNameProps {
+	_type?: Type;
+	_size?: Size;
 	className?: string;
-}
+  }
 
 export default function withClassName(injectedClassName: string) {
 	return function hocWithClassName<ComponentProps>(Component: ComponentType<ComponentProps>) {
@@ -29,8 +32,8 @@ export default function withClassName(injectedClassName: string) {
 					{...props as ComponentProps}
 					className={classNames(
 						injectedClassName,
-						TYPES[_type] && className + TYPES[_type],
-						SIZES[_size] && className + SIZES[_size],
+						_type && TYPES[_type] && injectedClassName + TYPES[_type],
+						_size && SIZES[_size] && injectedClassName + SIZES[_size],
 						className,
 					)}
 				/>
