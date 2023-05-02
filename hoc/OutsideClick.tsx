@@ -1,4 +1,4 @@
-import React, { useEffect, ReactElement, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface IOutsideClickProps {
 	onClickOutside?: (e: Event) => void;
