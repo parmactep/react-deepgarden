@@ -16,40 +16,37 @@ interface IDialogProps {
 	children: React.ReactNode;
 }
 
-// @ts-ignore 	// @TODO: TS
-@withClassName('_Dialog')
-class Dialog extends React.Component<IDialogProps> {
-	handleConfirm = () => {
-		this.props.onConfirm && this.props.onConfirm();
+const Dialog = withClassName('_Toast')(({ ...props }: IDialogProps) => {
+	const handleConfirm = () => {
+		props.onConfirm && props.onConfirm();
 	};
-	handleClose = () => {
-		this.props.onClose && this.props.onClose();
+	const handleClose = () => {
+		props.onClose && props.onClose();
 	};
-	render() {
-		return (
-			<div className="_Dialog__Overlay">
-				<div className={this.props.className}>
-					{
-						<div className="_Dialog__Header">
-							{ `${this.props.title || 'Delete confirmation'}` }
-						</div>
-					}
-					<div className="_Dialog__Body">
-						{this.props.children}
+
+	return (
+		<div className="_Dialog__Overlay">
+			<div className={props.className}>
+				{
+					<div className="_Dialog__Header">
+						{ `${props.title || 'Delete confirmation'}` }
 					</div>
-					<div className="_Dialog__Footer">
-						<Group>
-							{
-								this.props.withCancel && <Button _ghost onClick={this.handleClose}>{ this.props.cancelText || 'Cancel' }</Button>
-							}
-							<Button _type="success" onClick={this.handleConfirm}>Ok</Button>
-						</Group>
-					</div>
+				}
+				<div className="_Dialog__Body">
+					{props.children}
+				</div>
+				<div className="_Dialog__Footer">
+					<Group>
+						{
+							props.withCancel && <Button _ghost onClick={handleClose}>{ props.cancelText || 'Cancel' }</Button>
+						}
+						<Button _type="success" onClick={handleConfirm}>Ok</Button>
+					</Group>
 				</div>
 			</div>
-		);
-	}
-}
+		</div>
+	);
+});
 
 export function dialog(text: React.ReactNode, props = {}) {
 	const $node = document.createElement('div');

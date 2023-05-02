@@ -10,6 +10,7 @@ import { portal } from '../../hoc/portal';
 const $node = document.createElement('div'); // @TODO: Test browser support
 
 const toasts = new Map();
+
 // @ts-ignore 	// @TODO: TS
 @portal({ className: '_Toast__Overlay' })
 class Toasts extends React.Component {
