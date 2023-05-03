@@ -12,7 +12,7 @@ const DIRECTION_CLASS: Record<string, string> = {
 }
 
 export interface IDropDownProps {
-	direction?:  keyof typeof DIRECTION_CLASS;
+	direction?: keyof typeof DIRECTION_CLASS;
 	className?: string;
 	onClose?: (e: Event) => void;
 	children?: ReactNode;
