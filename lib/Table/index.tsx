@@ -41,12 +41,12 @@ export default function Table({
 		},
 	);
 
-	const renderRow = (data: any, rowKey:  number) => {
+	const renderRow = (rowData: any, rowKey:  number) => {
 		return (
 			<div
 				className="_Table__Row"
 				key={rowKey}
-				onClick={(e) => onRowClick && onRowClick(data[e.currentTarget.dataset.key])}
+				onClick={(e) => onRowClick && onRowClick(rowData)}
 				data-key={rowKey}
 			>
 				{columns.map((column, columnKey) => {
@@ -56,7 +56,7 @@ export default function Table({
 							rowKey={rowKey}
 							columnKey={columnKey}
 							key={columnKey}
-							data={data}
+							data={rowData}
 							render={renderCell}
 						/>
 					);
