@@ -11,29 +11,11 @@ const DIRECTION_CLASS: Record<string, string> = {
 	left_top: 'LeftTop',
 }
 
-
 export interface IDropDownProps {
 	direction?:  keyof typeof DIRECTION_CLASS;
 	className?: string;
 	onClose?: (e: Event) => void;
 	children?: ReactNode;
-}
-
-function DropDown({
-	direction = 'bottom',
-	className = '',
-	onClose,
-	children
-}: IDropDownProps) {
-	const handleClickOutside = (e: Event) => {
-		onClose && onClose(e);
-	};
-
-interface IDropDownProps {
-	direction?: keyof typeof DIRECTION_CLASS;
-	className?: string;
-	children?: ReactNode;
-	onClose?: (e: Event) => void;
 }
 
 function DropDown({
