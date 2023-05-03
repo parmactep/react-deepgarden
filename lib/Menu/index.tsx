@@ -11,17 +11,18 @@ export interface IMenuProps {
 }
 
 export default function Menu({ options = [], onSelect = () => {} }: IMenuProps) {
-	const handleSelect = (e: SyntheticEvent) => {
-		const option = options[e.currentTarget.dataset.key];
+	const handleSelect = (e: SyntheticEvent<HTMLDivElement>) => {
+		const { key } = e.currentTarget.dataset;
+		const option = options[Number(key)];
 		onSelect(option.value);
-	}
+	};
 
 	const renderOption = (option: IOptions, key: number) => (
 		<div className="_Menu__Option" key={key} data-key={key} onClick={handleSelect}>
 			{option.label}
 		</div>
 	);
-	
+
 	return <div className="_Menu">{options.map(renderOption)}</div>;
 }
 

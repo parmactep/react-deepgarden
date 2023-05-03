@@ -11,10 +11,11 @@ export interface INavProps {
 }
 
 export default function Nav({ options = [], onSelect = () => {} }: INavProps) {
-	const handleSelect = (e: SyntheticEvent) => {
-		const option = options[e.currentTarget.dataset.key];
+	const handleSelect = (e: SyntheticEvent<HTMLDivElement>) => {
+		const { key } = e.currentTarget.dataset;
+		const option = options[Number(key)];
 		onSelect(option.value);
-	}
+	};
 
 	const renderOption = (option: IOptions, key: number) => (
 		<div className="_Nav__Option" key={key} data-key={key} onClick={handleSelect}>

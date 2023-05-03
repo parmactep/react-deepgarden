@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { useState, ReactNode, SyntheticEvent } from 'react';
 import classNames from 'classnames';
 
 interface ITabProps {
@@ -8,10 +8,7 @@ interface ITabProps {
 interface ITabsProps {
 	onChange?: (key: number) => void;
 	tabs: any[];
-}
-
-interface ITabsState {
-	active: number;
+	children: ReactNode;
 }
 
 const Tab = (props: ITabProps) => (
@@ -22,50 +19,46 @@ const Tab = (props: ITabProps) => (
 
 Tab.displayName = 'Tab';
 
-export default class Tabs extends React.Component<ITabsProps, ITabsState> {
-	static defaultProps: ITabsProps = {
-		tabs: [],
+function Tabs({ tabs = [], onChange, children }: ITabsProps) {
+	const [active, setActive] = useState(0);
+
+	const handleChange = (e: SyntheticEvent<HTMLDivElement>) => {
+		const { key } = e.currentTarget.dataset;
+		setActive(Number(key));
+		onChange && onChange(Number(key));
 	};
-	static Tab: typeof Tab;
-	state: ITabsState = {
-		active: 0,
-	};
-	handleChange = (e: any) => {
-		const key = Number(e.currentTarget.dataset.key);
-		this.setState({
-			active: key,
-		});
-		this.props.onChange && this.props.onChange(key);
-	};
-	renderControl = (child: any, key: number) => {
+
+	const renderControl = (child: any, key: number) => {
 		if (!child.type || child.type.displayName !== 'Tab') return;
 		return (
 			<div
 				key={key}
-				className={classNames('_Tabs__Title', { '_Tabs__Title--Active': key === this.state.active })}
+				className={classNames('_Tabs__Title', { '_Tabs__Title--Active': key === active })}
 				data-key={key}
-				onClick={this.handleChange}
+				onClick={handleChange}
 			>
 				{child.props.title}
 			</div>
 		);
 	};
-	renderChildren = (child: any, key: number) => {
-		if (!child.type || child.type.displayName !== 'Tab' || key === this.state.active) return true;
+	const renderChildren = (child: any, key: number) => {
+		if (!child.type || child.type.displayName !== 'Tab' || key === active) return true;
 	};
-	render() {
-		const children = React.Children.toArray(this.props.children);
-		return (
-			<div className="_Tabs">
-				<div className="_Tabs__Control">
-					{children.map(this.renderControl)}
-				</div>
-				{children.filter(this.renderChildren)}
+
+	const childrenArray = React.Children.toArray(children);
+
+	return (
+		<div className="_Tabs">
+			<div className="_Tabs__Control">
+				{childrenArray.map(renderControl)}
 			</div>
-		);
-	}
+			{childrenArray.filter(renderChildren)}
+		</div>
+	);
 }
 
 Tabs.Tab = Tab;
+
+export default Tabs;
 
 import './index.styl';

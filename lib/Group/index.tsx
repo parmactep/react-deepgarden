@@ -1,15 +1,18 @@
-import React, { FC } from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import './index.styl';
 
-interface GroupProps {
+export interface GroupProps {
 	className?: string;
+	children?: ReactNode;
 }
 
-const Group: FC<GroupProps> = ({ className, children }) => (
-	<div className={classNames('_Group', className)}>
-		{children}
-	</div>
-);
+function Group ({ className, children }: GroupProps) {
+	return (
+		<div className={classNames('_Group', className)}>
+			{children}
+		</div>
+	)
+};
 
 export default Group;

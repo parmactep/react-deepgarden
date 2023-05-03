@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import classNames from 'classnames';
 
 import Preloader from '../Preloader';
@@ -12,18 +12,17 @@ export interface ISubmitProps {
 	children?: ReactNode;
 }
 
-export default class Form extends React.Component<ISubmitProps> {
-	static contextType = Context;
-	render() {
-		return (
-			<form
-				className={classNames('_Form__Form', this.props.className)}
-				onSubmit={this.context.handleSubmit}
-			>
-				{this.props.children}
-				<button type="submit" className="_Form__HiddenSubmit" />
-				{this.props.pending && <Preloader />}
-			</form>
-		);
-	}
-}
+export default function Form({ className, pending, children }: ISubmitProps) {
+	const { handleSubmit } = useContext(Context);
+
+	return (
+		<form
+			className={classNames('_Form__Form', className)}
+			onSubmit={handleSubmit}
+		>
+			{children}
+			<button type="submit" className="_Form__HiddenSubmit" />
+			{pending && <Preloader />}
+		</form>
+	);
+};

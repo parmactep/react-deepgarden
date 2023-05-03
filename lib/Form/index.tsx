@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
+import React, { useState, ReactNode, FormEvent } from 'react';
 import { set } from 'lodash';
 
-import Context from './Context';
+import Context, { IContextValue } from './Context';
 
 import Form from './Form'; // @TODO: Rename
 import Field from './Field';
@@ -13,94 +13,69 @@ interface IFormContextProps {
 	children?: ReactNode;
 }
 
-interface IFormContextState {
-	values: {[x: string]: any;};
-    touched: {[x: string]: boolean;};
-    errors: {[x: string]: any;};
-    isDirty: boolean;
-}
+function FormContext({
+	initialValues = {},
+	validate,
+	onSubmit,
+	children,
+}: IFormContextProps) {
+	const [values, setValues] = useState(initialValues);
+	const [touched, setTouched] = useState({});
+	const [errors, setErrors] = useState(
+		validate ? validate(initialValues) : {},
+	);
+	const [isDirty, setIsDirty] = useState(true);
+	const isValid = !Object.values(errors).filter((error) => !!error).length;
 
-export default class FormContext extends React.Component<IFormContextProps, IFormContextState> {
-	static defaultProps = {
-		initialValues: {},
+	const validateForm = () => {
+		setErrors(validate ? validate(values) : {});
 	};
-	static Context: React.Context<{}>;
-	static Form: typeof Form;
-	static Field: typeof Field;
 
-	state: IFormContextState = {
-		values: this.props.initialValues,
-		touched: {},
-		errors: this.props.validate && this.props.validate(this.props.initialValues) || {},
-		isDirty: true,
+	const setFieldValue = (name: string, value: any, isTouched = false) => {
+		setValues((prevValues) => set({ ...prevValues }, name, value));
+		if (isTouched) {
+			setTouched((prevTouched) => ({ ...prevTouched, [name]: true }));
+		}
+		validateForm();
 	};
-	get isValid() {
-		return !Object
-			.values(this.state.errors)
-			.filter((error) => !!error)
-			.length;
-	}
-	set = (name: string, value: any, isTouched = false) => {
-		this.setState((prevState) => ({
-			values: set({ ...prevState.values }, name, value),
-			...(isTouched && {
-				touched: {
-					...prevState.touched,
-					[name]: true,
-				},
-			}),
-		}), this.validate);
+
+	const touchField = (name: string) => {
+		setTouched((prevTouched) => ({ ...prevTouched, [name]: true }));
+		validateForm();
 	};
-	touch = (name: string) => {
-		this.setState({
-			touched: {
-				...this.state.touched,
-				[name]: true,
-			}
-		}, this.validate);
-	}
-	handleBlur = (e: any) => {
-		this.touch(e.target.name);
-	}
-	validate = () => {
-		this.setState({
-			errors: this.props.validate && this.props.validate(this.state.values) || {},
-		});
-	}
-	handleSubmit = (e: Event) => {
+
+	const handleBlur = (e: any) => {
+		touchField(e.target.name);
+	};
+
+	const handleSubmit = (e: FormEvent) => {
 		e && e.preventDefault();
-		this.setState({
-			isDirty: false,
-		});
-		this.isValid && this.props.onSubmit(this.state.values);
+		setIsDirty(false);
+		isValid && onSubmit(values);
 	};
-	render() {
-		const contextValue = {
-			values: this.state.values,
-			errors: this.state.errors,
-			touched: this.state.touched,
-			isValid: this.isValid,
-			isDirty: this.state.isDirty,
-			handleBlur: this.handleBlur,
-			handleChange: this.set,
-			handleSubmit: this.handleSubmit,
-		};
-		return (
-			<Context.Provider
-				value={contextValue}
-			>
-				{
-					typeof this.props.children === 'function'
-						? this.props.children(contextValue)
-						: this.props.children
-				}
-			</Context.Provider>
-		);
-	}
+
+	const contextValue: IContextValue = {
+		values,
+		errors,
+		touched,
+		isValid,
+		isDirty,
+		handleBlur,
+		handleChange: setFieldValue,
+		handleSubmit,
+	};
+
+	return (
+		<Context.Provider value={contextValue}>
+			{typeof children === 'function' ? children(contextValue) : children}
+		</Context.Provider>
+	);
 }
 
 FormContext.Context = Context;
 FormContext.Form = Form;
 FormContext.Field = Field;
+
+export default FormContext;
 
 import './index.styl';

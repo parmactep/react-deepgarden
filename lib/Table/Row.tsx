@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export interface IRowProps {
+export interface IRowProps extends React.HTMLAttributes<HTMLDivElement> {
 	className?: string;
 }
 

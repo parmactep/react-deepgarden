@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-import classNames, { ReactNode } from 'classnames';
+import classNames from 'classnames';
 
 const classes: Record<string, string> = {
 	error: '-Error',
