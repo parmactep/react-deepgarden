@@ -12,13 +12,12 @@ const $node = document.createElement('div'); // @TODO: Test browser support
 const toasts = new Map();
 
 // @ts-ignore 	// @TODO: TS
-@portal({ className: '_Toast__Overlay' })
-class Toasts extends React.Component {
-	render() {
-		// @ts-ignore 	// @TODO: TS
-		return [...toasts.keys()].map((toast, key) => <Toast key={key} {...toast} />);
-	}
-}
+const Toasts = portal({ className: '_Toast__Overlay' })(() => {
+	const toastElements = Array.from(toasts.keys()).map((toast, index) => (
+		<Toast key={index} {...toast} />
+	));
+	return toastElements;
+});
 
 function removeToast(props: {[x: string]: any}) {
 	toasts.delete(props);

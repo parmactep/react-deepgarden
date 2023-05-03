@@ -16,7 +16,7 @@ export interface IDialogProps {
 	children: ReactNode;
 }
 
-const Dialog = withClassName('_Toast')(({
+const Dialog = withClassName('_Dialog')(({
 	onConfirm,
 	onClose,
 	title,
