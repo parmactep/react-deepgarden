@@ -12,16 +12,16 @@ interface IFormProps {
 }
 
 export default function Form(props: IFormProps) {
-const { handleSubmit } = useContext(Context);
+	const { handleSubmit } = useContext(Context);
 
-return (
-	<form
-		className={classNames('_Form__Form', props.className)}
-		onSubmit={handleSubmit}
-	>
-		{props.children}
-		<button type="submit" className="_Form__HiddenSubmit" />
-		{props.pending && <Preloader />}
-	</form>
-);
+	return (
+		<form
+			className={classNames('_Form__Form', props.className)}
+			onSubmit={handleSubmit}
+		>
+			{props.children}
+			<button type="submit" className="_Form__HiddenSubmit" />
+			{props.pending && <Preloader />}
+		</form>
+	);
 }
