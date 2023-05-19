@@ -9,6 +9,7 @@ export interface IButtonProps {
 	disabled?: boolean;
 	onClick?: () => void;
 	className?: string;
+	_size?: string;
 	type?: "button" | "submit" | "reset";
 	children?: ReactNode;
 }
