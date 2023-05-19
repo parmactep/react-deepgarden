@@ -4,7 +4,7 @@ import classNames from 'classnames';
 export interface IColumnProps {
 	className?: string;
 	children?: ReactNode;
-	width?: number;
+	width?: number | string;
 	title?: ReactNode;
 	summary?: ReactNode;
 }
