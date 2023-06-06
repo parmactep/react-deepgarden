@@ -16,7 +16,7 @@ export { default as Nav } from './lib/Nav';
 
 export { default as DropDown } from './lib/DropDown';
 export { default as withDropDown } from './lib/DropDown/withDropDown';
-export { default as PortalDropDown } from './lib/DropDown/portalDropDown';
+export { default as PortalDropDown } from './lib/DropDown/PortalDropDown';
 
 export { default as Tabs } from './lib/Tabs';
 
