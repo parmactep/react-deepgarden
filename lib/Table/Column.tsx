@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 export interface IColumnProps {
 	className?: string;
-	children?: ReactNode;
+	children?: ReactNode | ((data: any) => ReactNode);
 	width?: number;
 	title?: ReactNode;
 	summary?: ReactNode;

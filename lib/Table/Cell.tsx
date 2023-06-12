@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 interface ICellProps {
 	className?: string;
-	children?: ReactNode;
+	children?: ReactNode | ((data: any, rowKey: number, columnKey: number) => ReactNode);
 	rowKey: number;
 	columnKey: number;
 	data: any,
