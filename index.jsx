@@ -1,4 +1,6 @@
 export { default as Grid } from './lib/Grid';
+export { default as IColProps } from './lib/Grid/Col';
+export { default as IRowProps } from './lib/Grid/Row';
 
 export { default as Form } from './lib/Form';
 
