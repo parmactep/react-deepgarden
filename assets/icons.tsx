@@ -1,6 +1,6 @@
 import React, { HTMLProps } from 'react';
 
-export function CloseIcon(props: HTMLProps<any>) {
+export default function CloseIcon(props: HTMLProps<any>) {
 	return (
 		<svg
 			aria-hidden="true"

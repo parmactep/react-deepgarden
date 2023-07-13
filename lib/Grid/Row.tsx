@@ -6,8 +6,10 @@ export interface IRowProps {
 	children?: ReactNode;
 }
 
-export default ({ className, children }: IRowProps) => (
-	<div className={classNames('_Grid__Row', className)}>
-		{children}
-	</div>
-);
+export default function ({ className, children }: IRowProps) {
+	return (
+		<div className={classNames('_Grid__Row', className)}>
+			{children}
+		</div>
+	);
+}

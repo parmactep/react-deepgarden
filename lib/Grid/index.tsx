@@ -12,11 +12,13 @@ export interface IGridProps {
 	children?: ReactNode;
 }
 
-const Grid = ({ className, noHidden, children }: IGridProps) => (
-	<div className={classNames('_Grid', className, { '_Grid--noHidden': noHidden })}>
-		{children}
-	</div>
-);
+function Grid({ className, noHidden, children }: IGridProps) {
+	return (
+		<div className={classNames('_Grid', className, { '_Grid--noHidden': noHidden })}>
+			{children}
+		</div>
+	);
+}
 
 Grid.Row = Row;
 Grid.Col = Col;

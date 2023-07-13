@@ -1,4 +1,6 @@
-import React, { useEffect, useState, forwardRef, ReactNode, ComponentType } from 'react';
+import React, {
+	useEffect, useState, forwardRef, ReactNode, ComponentType,
+} from 'react';
 import ReactDOM from 'react-dom';
 
 export interface IPortalProps {
@@ -6,8 +8,7 @@ export interface IPortalProps {
 	children?: ReactNode;
 }
 
-function Portal({ className, children }: IPortalProps) {
-
+function Portal({ className = '', children }: IPortalProps) {
 	const [mountedNode, setMountedNode] = useState<HTMLDivElement>();
 
 	useEffect(() => {
@@ -18,7 +19,7 @@ function Portal({ className, children }: IPortalProps) {
 
 		return () => {
 			document.body.removeChild(node);
-		}
+		};
 	}, [className]);
 
 	if (!mountedNode) {
@@ -40,5 +41,5 @@ export function portal(portalProps: IPortalProps = {}) {
 				<Component {...props as ComponentProps} ref={ref} />
 			</Portal>
 		));
-	}
+	};
 }

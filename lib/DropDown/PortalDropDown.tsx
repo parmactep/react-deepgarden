@@ -20,7 +20,7 @@ interface IDropDownProps {
 }
 
 const DropDown = React.forwardRef(({
-	direction =  'bottom',
+	direction = 'bottom',
 	className,
 	children,
 	onClose,
@@ -29,11 +29,11 @@ const DropDown = React.forwardRef(({
 		onClose && onClose(e);
 	};
 
-	let rect = ref.current?.getBoundingClientRect();
+	const rect = ref.current?.getBoundingClientRect();
 	const style = {
 		top: `${rect.bottom}px`,
 		left: `${rect.left + (rect.width / 2)}px`,
-	}
+	};
 
 	return (
 		<OutsideClick

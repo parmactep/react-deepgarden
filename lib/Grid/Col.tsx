@@ -15,7 +15,13 @@ export interface IColProps {
 	children?: ReactNode;
 }
 
-export default ({ className, col, offset, align, children }: IColProps) => {
+export default function ({
+	className,
+	col,
+	offset,
+	align,
+	children,
+}: IColProps) {
 	const colClass = col ? `_Grid__Col--${col}` : '';
 	const offsetClass = offset ? `'_Grid__Col--Offset' ${offset}` : '';
 	const alignClass = align ? alignClasses[align] : '';
@@ -25,4 +31,4 @@ export default ({ className, col, offset, align, children }: IColProps) => {
 			{children}
 		</div>
 	);
-};
+}

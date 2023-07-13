@@ -5,14 +5,16 @@ interface ITableProps {
 	className?: string;
 }
 
-const Table = ({
+function Table({
 	className,
 	...props
-}: ITableProps) => (
-	<div
-		className={classNames('_Table__Table', className)}
-		{...props}
-	/>
-);
+}: ITableProps) {
+	return (
+		<div
+			className={classNames('_Table__Table', className)}
+			{...props}
+		/>
+	);
+}
 
 export default Table;

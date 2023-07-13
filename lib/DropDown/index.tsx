@@ -19,7 +19,7 @@ interface IDropDownProps {
 }
 
 function DropDown({
-	direction =  'bottom',
+	direction = 'bottom',
 	className,
 	children,
 	onClose,
