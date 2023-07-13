@@ -15,7 +15,7 @@ export interface IColProps {
 	children?: ReactNode;
 }
 
-export default function ({
+export default function Col({
 	className,
 	col,
 	offset,

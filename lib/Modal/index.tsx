@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { portal } from '../../hoc/portal';
 import OutsideClick from '../../hoc/OutsideClick';
 
-import CloseIcon from '../../assets/icons';
+import { CloseIcon } from '../../assets/icons';
 
 interface IModalProps {
 	onClose?: () => void;

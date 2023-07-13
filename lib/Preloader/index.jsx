@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export default function (props) {
+export default function Preloader(props) {
 	return <div className={classNames('_Preloader', props.className)} />;
 }
 

@@ -6,7 +6,7 @@ export interface IRowProps {
 	children?: ReactNode;
 }
 
-export default function ({ className, children }: IRowProps) {
+export default function Row({ className, children }: IRowProps) {
 	return (
 		<div className={classNames('_Grid__Row', className)}>
 			{children}
