@@ -9,14 +9,16 @@ export interface IColumnProps {
 	summary?: ReactNode;
 }
 
-const Column = ({ width, title, className }: IColumnProps) => (
-	<div
-		className={classNames('_Table__Column', className)}
-		style={width && { width }}
-	>
-		{title}
-	</div>
-);
+function Column({ width, title, className }: IColumnProps) {
+	return (
+		<div
+			className={classNames('_Table__Column', className)}
+			style={width && { width }}
+		>
+			{title}
+		</div>
+	);
+}
 
 Column.displayName = 'Table.Column';
 

@@ -23,7 +23,9 @@ interface IWithClassNameProps {
 
 export default function withClassName(injectedClassName: string) {
 	return function hocWithClassName<ComponentProps>(Component: ComponentType<ComponentProps>) {
-		return function ComponentWithClassName({ _type, _size, className, ...props }: ComponentProps & IWithClassNameProps) {
+		return function ComponentWithClassName({
+			_type, _size, className, ...props
+		}: ComponentProps & IWithClassNameProps) {
 			return (
 				<Component
 					{...props as ComponentProps}
@@ -34,7 +36,7 @@ export default function withClassName(injectedClassName: string) {
 						className,
 					)}
 				/>
-			)
-		}
-	}
+			);
+		};
+	};
 }

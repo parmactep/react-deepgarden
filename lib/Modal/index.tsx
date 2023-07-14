@@ -25,7 +25,6 @@ function Modal({
 	closeButton = false,
 	closeOnClickOutside = false,
 }: IModalProps) {
-
 	const handleClickOutside = () => {
 		!!closeOnClickOutside && onClose();
 	};

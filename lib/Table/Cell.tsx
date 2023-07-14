@@ -18,10 +18,11 @@ export default function Cell({
 	data,
 	render,
 }: ICellProps) {
-
-	const renderCell = () => typeof children === 'function'
-		? children(data, rowKey, columnKey)
-		: children;
+	const renderCell = () => (
+		typeof children === 'function'
+			? children(data, rowKey, columnKey)
+			: children
+	);
 
 	return (
 		<div
@@ -31,5 +32,5 @@ export default function Cell({
 				? render(renderCell)
 				: renderCell()}
 		</div>
-	)
+	);
 }

@@ -5,13 +5,11 @@ interface IOutsideClickProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 function OutsideClick({ onClickOutside, ...props }: IOutsideClickProps) {
-
 	const ref = useRef<HTMLDivElement>();
 
 	useEffect(() => {
-
 		const handleClickOutside = (e: Event) => {
-			if (ref.current.contains(e.target as HTMLElement)) {
+			if (ref.current?.contains(e.target as HTMLElement)) {
 				return false;
 			}
 			onClickOutside && onClickOutside(e);
@@ -20,7 +18,7 @@ function OutsideClick({ onClickOutside, ...props }: IOutsideClickProps) {
 
 		return () => {
 			document.removeEventListener('click', handleClickOutside);
-		}
+		};
 	}, []);
 
 	return (

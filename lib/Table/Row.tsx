@@ -5,14 +5,16 @@ interface IRowProps {
 	className?: string;
 }
 
-const Row = ({
+function Row({
 	className,
 	...props
-}: IRowProps) => (
-	<div
-		className={classNames('_Table__Row', className)}
-		{...props}
-	/>
-);
+}: IRowProps) {
+	return (
+		<div
+			className={classNames('_Table__Row', className)}
+			{...props}
+		/>
+	);
+}
 
 export default Row;
