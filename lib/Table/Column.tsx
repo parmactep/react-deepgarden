@@ -3,10 +3,10 @@ import classNames from 'classnames';
 
 export interface IColumnProps {
 	className?: string;
-	children?: ReactNode | ((data: any) => ReactNode);
+	children?: ReactNode | ((data: any) => ReactNode); // eslint-disable-line react/no-unused-prop-types
 	width?: number;
 	title?: ReactNode;
-	summary?: ReactNode;
+	summary?: ReactNode; // eslint-disable-line react/no-unused-prop-types
 }
 
 function Column({ width, title, className }: IColumnProps) {

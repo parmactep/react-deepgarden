@@ -45,7 +45,7 @@ export default function Table({
 		<div
 			className="_Table__Row"
 			key={rowKey}
-			onClick={(e) => onRowClick && onRowClick(rowData)}
+			onClick={() => onRowClick && onRowClick(rowData)}
 			data-key={rowKey}
 		>
 			{columns.map((column, columnKey) => (

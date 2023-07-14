@@ -1,6 +1,6 @@
 import React, { HTMLProps } from 'react';
 
-export function CloseIcon(props: HTMLProps<any>) {
+export function CloseIcon(props: HTMLProps<any>) { // eslint-disable-line import/prefer-default-export
 	return (
 		<svg
 			aria-hidden="true"

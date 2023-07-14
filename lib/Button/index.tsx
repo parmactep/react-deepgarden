@@ -10,7 +10,7 @@ export interface IButtonProps {
 	onClick?: (() => void) | ((e: SyntheticEvent) => void);
 	className?: string;
 	children?: ReactNode;
-	type?: "button" | "submit" | "reset"
+	type?: 'button' | 'submit' | 'reset'
 }
 
 function Button({ _ghost, ...props }: IButtonProps) {
