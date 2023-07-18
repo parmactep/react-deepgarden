@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import Button from '../Button';
 import Group from '../Group';
@@ -43,15 +43,21 @@ class Dialog extends React.Component {
 export function dialog(text, props = {}) {
 	const $node = document.createElement('div');
 	document.body.appendChild($node);
+	const root = createRoot($node);
 
 	return new Promise(((resolve, reject) => {
-		ReactDOM.render(
-			<Dialog onConfirm={resolve} onClose={reject} {...props}>{text}</Dialog>,
-			$node,
+		root.render(
+			<Dialog
+				onConfirm={resolve}
+				onClose={reject}
+				{...props}
+			>
+				{text}
+			</Dialog>
 		);
 	}))
 		.finally(() => {
-			ReactDOM.unmountComponentAtNode($node);
+			root.unmount();
 			document.body.removeChild($node);
 		});
 }

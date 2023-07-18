@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import Toast from './index';
 
@@ -8,6 +8,7 @@ const DEFAULT_TIMEOUT = 5000;
 import { portal } from '../../hoc/portal';
 
 const $node = document.createElement('div'); // @TODO: Test browser support
+const root = createRoot($node);
 
 let toasts = new Map();
 
@@ -26,9 +27,8 @@ export default function toast({ timeout = DEFAULT_TIMEOUT, ...props }) {
 
 	setTimeout(() => removeToast(props), timeout);
 
-	ReactDOM.render(
-		<Toasts />,
-		$node,
+	root.render(
+		<Toasts />
 	);
 }
 
@@ -37,11 +37,10 @@ function removeToast(props) {
 	toasts.delete(props);
 
 	if (toasts.size) {
-		ReactDOM.render(
-			<Toasts />,
-			$node,
+		root.render(
+			<Toasts />
 		);
 	} else {
-		ReactDOM.unmountComponentAtNode($node);
+		root.unmount();
 	}
 }
