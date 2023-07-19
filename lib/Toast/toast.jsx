@@ -12,14 +12,11 @@ const root = createRoot($node);
 
 let toasts = new Map();
 
-@portal({
+const Toasts = portal({
 	className: '_Toast__Overlay',
+})(function () {
+	return [...toasts.keys()].map((toast, key) => <Toast key={key} {...toast} />);
 })
-class Toasts extends React.Component {
-	render() {
-		return [...toasts.keys()].map((toast, key) => <Toast key={key} {...toast} />);
-	}
-}
 
 export default function toast({ timeout = DEFAULT_TIMEOUT, ...props }) {
 
@@ -36,11 +33,7 @@ function removeToast(props) {
 
 	toasts.delete(props);
 
-	if (toasts.size) {
-		root.render(
-			<Toasts />
-		);
-	} else {
-		root.unmount();
-	}
+	root.render(
+		<Toasts />
+	);
 }
