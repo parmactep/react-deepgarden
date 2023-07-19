@@ -1,4 +1,11 @@
-import React, { ReactNode, FunctionComponent, isValidElement } from 'react';
+import React, {
+	ReactNode,
+	FunctionComponent,
+	isValidElement,
+	forwardRef,
+	ForwardRefExoticComponent,
+	RefAttributes, ForwardedRef
+} from 'react';
 import classNames from 'classnames';
 
 import Body from './Table';
@@ -16,18 +23,25 @@ interface ITableProps {
 	onRowClick?: (rowData: any) => void;
 }
 
-export default function Table({
+interface ITable extends ForwardRefExoticComponent<ITableProps & RefAttributes<HTMLDivElement>> {
+	Cell: typeof Cell;
+	Row: typeof Row;
+	Body: typeof Body;
+	Column: typeof Column;
+}
+
+const Table = forwardRef(function Table({
 	className,
 	children,
 	data = [],
 	renderCell,
 	onRowClick,
-}: ITableProps) {
+}: ITableProps, ref: ForwardedRef<HTMLDivElement>) {
 	const columns: IColumnProps[] = [];
 	const nonColumnsChildren: ReactNode[] = [];
 	React.Children.forEach(
 		children,
-		(child) => {
+		(child: ReactNode) => {
 			if (
 				child
 				&& isValidElement(child)
@@ -62,7 +76,7 @@ export default function Table({
 	);
 
 	return (
-		<div className={classNames('_Table', className)}>
+		<div className={classNames('_Table', className)} ref={ref}>
 			<div className="_Table__Table">
 				<div className="_Table__Header">
 					{columns.map((column, key) => (
@@ -85,9 +99,13 @@ export default function Table({
 			{nonColumnsChildren}
 		</div>
 	);
-}
+});
 
-Table.Column = Column;
-Table.Body = Body;
-Table.Row = Row;
-Table.Cell = Cell;
+const Compounded = Table as ITable;
+
+Compounded.Column = Column;
+Compounded.Body = Body;
+Compounded.Row = Row;
+Compounded.Cell = Cell;
+
+export default Compounded;
