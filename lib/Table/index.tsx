@@ -4,7 +4,8 @@ import React, {
 	isValidElement,
 	forwardRef,
 	ForwardRefExoticComponent,
-	RefAttributes, ForwardedRef
+	RefAttributes,
+	ForwardedRef,
 } from 'react';
 import classNames from 'classnames';
 
@@ -30,7 +31,7 @@ interface ITable extends ForwardRefExoticComponent<ITableProps & RefAttributes<H
 	Column: typeof Column;
 }
 
-const Table = forwardRef(function Table({
+function Table({
 	className,
 	children,
 	data = [],
@@ -99,9 +100,9 @@ const Table = forwardRef(function Table({
 			{nonColumnsChildren}
 		</div>
 	);
-});
+}
 
-const Compounded = Table as ITable;
+const Compounded = forwardRef(Table) as ITable;
 
 Compounded.Column = Column;
 Compounded.Body = Body;
