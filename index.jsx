@@ -23,6 +23,7 @@ export { default as PortalDropDown } from './lib/DropDown/PortalDropDown';
 export { default as Tabs } from './lib/Tabs';
 
 export { default as Modal } from './lib/Modal';
+export { IModalProps } from './lib/Modal';
 
 export { default as Dialog } from './lib/Dialog';
 export { dialog } from './lib/Dialog';

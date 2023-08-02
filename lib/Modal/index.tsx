@@ -6,7 +6,7 @@ import OutsideClick from '../../hoc/OutsideClick';
 
 import { CloseIcon } from '../../assets/icons';
 
-interface IModalProps {
+export interface IModalProps {
 	onClose?: () => void;
 	header?: ReactNode;
 	children?: ReactNode;
