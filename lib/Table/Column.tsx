@@ -4,7 +4,7 @@ import classNames from 'classnames';
 export interface IColumnProps {
 	className?: string;
 	children?: ReactNode | ((data: any, rowKey: number, columnKey: number) => ReactNode); // eslint-disable-line react/no-unused-prop-types
-	width?: number;
+	width?: number | string;
 	title?: ReactNode;
 	summary?: ReactNode; // eslint-disable-line react/no-unused-prop-types
 }

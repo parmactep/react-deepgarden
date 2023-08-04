@@ -20,7 +20,7 @@ function Modal({
 	header,
 	footer,
 	children,
-	onClose,
+	onClose= () => {},
 	className,
 	closeButton = false,
 	closeOnClickOutside = false,

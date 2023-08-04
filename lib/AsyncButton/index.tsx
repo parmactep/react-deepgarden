@@ -3,12 +3,12 @@ import classNames from 'classnames';
 
 import Button, { IButtonProps } from '../Button';
 
-interface IAsyncButtonProps extends IButtonProps {
+export interface IAsyncButtonProps extends IButtonProps {
 	pending?: boolean;
 	onClick?: () => void;
 }
 
-export default function AsyncButton({ pending = false, onClick, ...props }: IAsyncButtonProps) {
+function AsyncButton({ pending = false, onClick, ...props }: IAsyncButtonProps) {
 	return (
 		<Button
 			className={classNames('_AsyncButton', { '_AsyncButton--Pending': pending })}
@@ -20,3 +20,5 @@ export default function AsyncButton({ pending = false, onClick, ...props }: IAsy
 }
 
 import './index.styl';
+
+export default AsyncButton;

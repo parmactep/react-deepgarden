@@ -37,6 +37,7 @@ export { default as Alert } from './lib/Alert';
 
 export { default as Pagination } from './lib/Pagination';
 export { default as AsyncButton } from './lib/AsyncButton';
+export { IAsyncButtonProps } from './lib/AsyncButton';
 
 export { default as withClassName } from './hoc/withClassName';
 export { default as OutsideClick } from './hoc/OutsideClick';
