@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-interface ITableProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ITableProps extends React.HTMLAttributes<HTMLDivElement> {
 	className?: string;
 }
 

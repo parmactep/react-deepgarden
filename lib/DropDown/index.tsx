@@ -11,7 +11,7 @@ const DIRECTION_CLASS = {
 	left_top: 'LeftTop',
 };
 
-interface IDropDownProps {
+export interface IDropDownProps {
 	direction?: keyof typeof DIRECTION_CLASS;
 	className?: string;
 	children?: ReactNode;

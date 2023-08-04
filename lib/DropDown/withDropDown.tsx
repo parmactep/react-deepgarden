@@ -2,7 +2,7 @@ import React, { useState, ReactNode, ComponentProps } from 'react';
 
 import DropDown from './index';
 
-export interface IWithDropDownProps extends ComponentProps<any>{
+interface IWithDropDownProps extends ComponentProps<any>{
 	dropDown: ReactNode;
 	children: ReactNode;
 }

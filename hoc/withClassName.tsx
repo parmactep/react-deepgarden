@@ -15,7 +15,7 @@ const SIZES: Record<string, string> = {
 	biggest: '--Biggest',
 };
 
-interface IWithClassNameProps {
+export interface IWithClassNameProps {
 	_type?: keyof typeof TYPES;
 	_size?: keyof typeof SIZES;
 	className?: string;

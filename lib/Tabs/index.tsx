@@ -1,11 +1,11 @@
 import React, { useState, ReactNode, SyntheticEvent } from 'react';
 import classNames from 'classnames';
 
-interface ITabProps {
+export interface ITabProps {
 	children: ReactNode;
 }
 
-interface ITabsProps {
+export interface ITabsProps {
 	onChange?: (key: number) => void;
 	tabs: any[];
 	children: ReactNode;
