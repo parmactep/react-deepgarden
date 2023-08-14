@@ -8,7 +8,7 @@ export interface IPortalProps {
 	children?: ReactNode;
 }
 
-function Portal({ className = '', children }: IPortalProps) {
+function Portal({ className = '_Portal__Overlay', children }: IPortalProps) {
 	const [mountedNode, setMountedNode] = useState<HTMLDivElement>();
 
 	useEffect(() => {

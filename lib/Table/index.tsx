@@ -16,7 +16,7 @@ import Row from './Row';
 
 import './index.styl';
 
-interface ITableProps {
+export interface ITableProps {
 	className?: string;
 	children?: ReactNode;
 	data?: any[];
@@ -24,7 +24,7 @@ interface ITableProps {
 	onRowClick?: (rowData: any) => void;
 }
 
-interface ITable extends ForwardRefExoticComponent<ITableProps & RefAttributes<HTMLDivElement>> {
+export interface ITable extends ForwardRefExoticComponent<ITableProps & RefAttributes<HTMLDivElement>> {
 	Cell: typeof Cell;
 	Row: typeof Row;
 	Body: typeof Body;

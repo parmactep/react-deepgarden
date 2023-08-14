@@ -5,14 +5,14 @@ import classNames from 'classnames';
 import OutsideClick from '../../hoc/OutsideClick';
 import { portal } from '../../hoc/portal';
 
-const DIRECTION_CLASS = {
+export const DIRECTION_CLASS = {
 	top: 'Top',
 	bottom: 'Bottom',
 	left_bottom: 'LeftBottom',
 	left_top: 'LeftTop',
 };
 
-interface IDropDownProps {
+export interface IPortalDropDownProps {
 	direction?: keyof typeof DIRECTION_CLASS;
 	className?: string;
 	children?: ReactNode;
@@ -24,7 +24,7 @@ const DropDown = React.forwardRef(({
 	className,
 	children,
 	onClose,
-}: IDropDownProps, ref: MutableRefObject<HTMLElement>) => {
+}: IPortalDropDownProps, ref: MutableRefObject<HTMLElement>) => {
 	const handleClickOutside = (e: Event) => {
 		onClose && onClose(e);
 	};

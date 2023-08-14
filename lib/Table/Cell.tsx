@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 
-interface ICellProps {
+export interface ICellProps {
 	className?: string;
 	children?: ReactNode | ((data: any, rowKey: number, columnKey: number) => ReactNode);
 	rowKey: number;

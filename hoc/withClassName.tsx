@@ -2,10 +2,10 @@ import React, { ComponentType } from 'react';
 import classNames from 'classnames';
 
 const TYPES: Record<string, string> = {
-	'notice': '--Notice',
-	'success': '--Success',
-	'warning': '--Warning',
-	'danger': '--Danger',
+	notice: '--Notice',
+	success: '--Success',
+	warning: '--Warning',
+	danger: '--Danger',
 };
 
 const SIZES: Record<string, string> = {
@@ -15,7 +15,7 @@ const SIZES: Record<string, string> = {
 	biggest: '--Biggest',
 };
 
-interface IWithClassNameProps {
+export interface IWithClassNameProps {
 	_type?: keyof typeof TYPES;
 	_size?: keyof typeof SIZES;
 	className?: string;
