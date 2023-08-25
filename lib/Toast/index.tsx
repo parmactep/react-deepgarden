@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 import withClassName from '../../hoc/withClassName';
 
 export interface IToastProps {
-	className: string;
+	className?: string;
 	title: string;
 	message: ReactNode;
 }

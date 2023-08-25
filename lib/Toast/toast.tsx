@@ -1,7 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-import Toast from './index';
+import Toast, { IToastProps } from './index';
+import { IWithClassNameProps } from '../../hoc/withClassName';
 
 const DEFAULT_TIMEOUT = 5000;
 
@@ -15,10 +16,17 @@ let toasts = new Map();
 const Toasts = portal({
 	className: '_Toast__Overlay',
 })(function () {
-	return [...toasts.keys()].map((toast, key) => <Toast key={key} {...toast} />);
-})
+	return (<>
+		{/* @ts-ignore */}
+		{[...toasts.keys()].map((toast, key) => <Toast key={key} {...toast} />)}
+	</>);
+});
 
-export default function toast({ timeout = DEFAULT_TIMEOUT, ...props }) {
+interface IToastArgs extends IWithClassNameProps, IToastProps {
+	timeout?: number;
+}
+
+export default function toast({ timeout = DEFAULT_TIMEOUT, ...props }: IToastArgs) {
 
 	toasts.set(props, true);
 
@@ -29,7 +37,7 @@ export default function toast({ timeout = DEFAULT_TIMEOUT, ...props }) {
 	);
 }
 
-function removeToast(props) {
+function removeToast(props: IToastProps) {
 
 	toasts.delete(props);
 
