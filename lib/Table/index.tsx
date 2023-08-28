@@ -20,7 +20,7 @@ export interface ITableProps {
 	className?: string;
 	children?: ReactNode;
 	data?: any[];
-	renderCell?: () => ReactNode;
+	renderCell?: (renderCell?: any) => ReactNode;
 	onRowClick?: (rowData: any) => void;
 }
 
