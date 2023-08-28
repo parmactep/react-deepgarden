@@ -9,9 +9,11 @@ export interface IButtonProps {
 	disabled?: boolean;
 	onClick?: (() => void) | ((e: SyntheticEvent) => void);
 	className?: string;
+	title?: string;
 	children?: ReactNode;
-	_size?: string;
 	type?: 'button' | 'submit' | 'reset'
+	_size?: string;
+	_type?: string;
 }
 
 function Button({ _ghost, ...props }: IButtonProps) {
