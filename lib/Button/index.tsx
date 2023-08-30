@@ -1,16 +1,16 @@
 import React, { ReactNode, SyntheticEvent } from 'react';
 import classNames from 'classnames';
 
-import withClassName from '../../hoc/withClassName';
+import withClassName, { IWithClassNameProps } from '../../hoc/withClassName';
 
-export interface IButtonProps {
+export interface IButtonProps extends IWithClassNameProps{
 	_ghost?: boolean;
 	href?: string;
 	disabled?: boolean;
 	onClick?: (() => void) | ((e: SyntheticEvent) => void);
 	className?: string;
+	title?: string;
 	children?: ReactNode;
-	_size?: string;
 	type?: 'button' | 'submit' | 'reset'
 }
 
