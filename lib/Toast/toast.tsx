@@ -17,8 +17,10 @@ const Toasts = portal({
 	className: '_Toast__Overlay',
 })(function () {
 	return (<>
-		{/* @ts-ignore */}
-		{[...toasts.keys()].map((toast, key) => <Toast key={key} {...toast} />)}
+		{Array.from(toasts.keys())
+			.map((toast, key) => (
+				<Toast key={key} {...toast} />
+			))}
 	</>);
 });
 
