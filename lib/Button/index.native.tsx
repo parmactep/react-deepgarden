@@ -1,5 +1,5 @@
 import React, { ReactNode, SyntheticEvent } from 'react';
-import { TouchableHighlight, View, Text } from 'react-native';
+import { TouchableHighlight, View, Text, ActivityIndicator } from 'react-native';
 
 import withClassName from '../../hoc/withClassName';
 
@@ -13,17 +13,19 @@ export interface IButtonProps {
 	className?: string;
 	children?: ReactNode;
 	_size?: string;
-	type?: 'button' | 'submit' | 'reset'
+	type?: 'button' | 'submit' | 'reset';
+	pending?: boolean;
 }
 
-function Button({ disabled, onPress, ...props }: IButtonProps) {
+function Button({ disabled, onPress, pending, ...props }: IButtonProps) {
 
 	const handlePress = () => {
-		if (disabled || !onPress) {
+		if (disabled || !onPress || pending) {
 			return;
 		}
 		onPress();
 	}
+
 	return (
 		<TouchableHighlight
 			onPress={handlePress}
@@ -32,6 +34,7 @@ function Button({ disabled, onPress, ...props }: IButtonProps) {
 			<View
 				style={styles.wrapper}
 			>
+				{pending && <ActivityIndicator color="#FFF" style={styles.Activity} />}
 				<Text style={styles.text}>
 					{props.children}
 				</Text>
