@@ -1,4 +1,5 @@
 import React, { ComponentType } from 'react';
+import classNames from 'classnames';
 
 const TYPES: Record<string, string> = {
 	notice: '--Notice',
@@ -28,6 +29,12 @@ export default function withClassName(injectedClassName: string) {
 			return (
 				<Component
 					{...props as ComponentProps}
+					className={classNames(
+						injectedClassName,
+						TYPES[_type] && injectedClassName + TYPES[_type],
+						SIZES[_size] && injectedClassName + SIZES[_size],
+						className,
+					)}
 				/>
 			);
 		};

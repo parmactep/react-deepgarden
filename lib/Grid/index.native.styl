@@ -1,0 +1,69 @@
+$grid = {
+	cols: 12
+	gutter: 20px
+}
+
+._Grid
+	//overflow: hidden // @TODO: fix it!!! Should remove hidden
+	margin: 10px 0
+	flex: 12
+
+	&--noHidden
+		overflow: visible
+
+._Grid__Row
+	flex-direction: row
+	flex-wrap: wrap
+	margin: (- $grid.gutter / 2)
+
+._Grid__Col
+	padding: ($grid.gutter / 2)
+	flex: 1
+
+._Grid__Col__1
+	flex: 1
+
+._Grid__Col__2
+	flex: 2
+
+._Grid__Col__1
+	flex: 1
+
+._Grid__Col__3
+	flex: 3
+
+._Grid__Col__4
+	flex: 4
+
+._Grid__Col__5
+	flex: 5
+
+._Grid__Col__6
+	flex: 6
+
+._Grid__Col__7
+	flex: 7
+
+._Grid__Col__8
+	flex: 8
+
+._Grid__Col__9
+	flex: 9
+
+._Grid__Col__10
+	flex: 10
+
+._Grid__Col__11
+	flex: 11
+
+._Grid__Col__12
+	flex: 12
+
+._Grid__Col--AlignStart
+	align-self: flex-start
+
+._Grid__Col--AlignEnd
+	align-self: flex-end
+
+._Grid__Col--AlignCenter
+	align-self: center
