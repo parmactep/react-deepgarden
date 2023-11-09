@@ -20,3 +20,8 @@ export { default as Grid } from './lib/Grid';
 export * from './lib/Grid';
 export * from './lib/Grid/Col';
 export * from './lib/Grid/Row';
+
+export { default as Table } from './lib/Table';
+export * from './lib/Table';
+export * from './lib/Table/Cell';
+export * from './lib/Table/Column';
