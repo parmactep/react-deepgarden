@@ -25,3 +25,6 @@ export { default as Table } from './lib/Table';
 export * from './lib/Table';
 export * from './lib/Table/Cell';
 export * from './lib/Table/Column';
+
+export { default as Tabs } from './lib/Tabs';
+export * from './lib/Tabs';
