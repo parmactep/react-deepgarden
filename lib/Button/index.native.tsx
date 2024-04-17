@@ -1,5 +1,5 @@
 import React, { ReactNode, SyntheticEvent } from 'react';
-import { TouchableHighlight, View, Text, ActivityIndicator } from 'react-native';
+import { Pressable, View, Text, ActivityIndicator } from 'react-native';
 
 import withClassName from '../../hoc/withClassName';
 
@@ -27,7 +27,7 @@ function Button({ disabled, onPress, pending, ...props }: IButtonProps) {
 	}
 
 	return (
-		<TouchableHighlight
+		<Pressable
 			onPress={handlePress}
 			{...props}
 		>
@@ -39,7 +39,7 @@ function Button({ disabled, onPress, pending, ...props }: IButtonProps) {
 					{props.children}
 				</Text>
 			</View>
-		</TouchableHighlight>
+		</Pressable>
 	);
 }
 
