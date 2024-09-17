@@ -17,7 +17,7 @@ export interface IButtonProps {
 	pending?: boolean;
 }
 
-function Button({ disabled, onPress, pending, className, ...props }: IButtonProps) {
+function Button({ disabled, onPress, pending, className, children, ...props }: IButtonProps) {
 
 	const handlePress = () => {
 		if (disabled || !onPress || pending) {
@@ -36,7 +36,7 @@ function Button({ disabled, onPress, pending, className, ...props }: IButtonProp
 			>
 				{pending && <ActivityIndicator color="#FFF" className={styles.Activity} />}
 				<Text className={styles.Text}>
-					{props.children}
+					{children}
 				</Text>
 			</View>
 		</Pressable>
