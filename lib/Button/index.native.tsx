@@ -11,13 +11,19 @@ export interface IButtonProps {
 	disabled?: boolean;
 	onPress?: () => void;
 	className?: string;
-	children?: ReactNode;
+	children?: string;
 	_size?: string;
 	type?: 'button' | 'submit' | 'reset';
 	pending?: boolean;
 }
 
-function Button({ disabled, onPress, pending, className, children, ...props }: IButtonProps) {
+function Button({
+	disabled,
+	onPress,
+	pending,
+	className,
+	children,
+}: IButtonProps) {
 
 	const handlePress = () => {
 		if (disabled || !onPress || pending) {
@@ -29,10 +35,9 @@ function Button({ disabled, onPress, pending, className, children, ...props }: I
 	return (
 		<Pressable
 			onPress={handlePress}
-			{...props}
 		>
 			<View
-				className={[styles.Wrapper, className].join(' ')}
+				className={{...styles.Wrapper, ...className}}
 			>
 				{pending && <ActivityIndicator color="#FFF" className={styles.Activity} />}
 				<Text className={styles.Text}>
