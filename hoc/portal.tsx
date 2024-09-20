@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, {
-	useEffect, useState, forwardRef, ReactNode, ComponentType,
+	useEffect, useState, forwardRef, ReactNode, ComponentType, ForwardedRef,
 } from 'react';
 import ReactDOM from 'react-dom';
 
@@ -37,7 +37,7 @@ export default Portal;
 
 export function portal(portalProps: IPortalProps = {}) {
 	return function<ComponentProps>(Component: ComponentType<ComponentProps>) {
-		return forwardRef((props: ComponentProps, ref) => (
+		return forwardRef((props: ComponentProps, ref: ForwardedRef<Component>) => (
 			<Portal {...portalProps}>
 				<Component {...props as ComponentProps} ref={ref} />
 			</Portal>
