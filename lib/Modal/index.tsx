@@ -14,6 +14,7 @@ export interface IModalProps {
 	className?: string;
 	closeButton?: boolean;
 	closeOnClickOutside?: boolean;
+	withMaxHeight?: boolean;
 }
 
 function Modal({
@@ -24,6 +25,7 @@ function Modal({
 	className,
 	closeButton = false,
 	closeOnClickOutside = false,
+	withMaxHeight = false,
 }: IModalProps) {
 	const handleClickOutside = () => {
 		!!closeOnClickOutside && onClose();
@@ -32,7 +34,7 @@ function Modal({
 	return (
 		<OutsideClick
 			onClickOutside={handleClickOutside}
-			className={classNames('_Modal', className)}
+			className={classNames('_Modal', { '_Modal--withMaxHeight': withMaxHeight }, className)}
 		>
 			{header && (
 				<div className="_Modal__Header">

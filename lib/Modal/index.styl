@@ -6,6 +6,15 @@
 	layer()
 	position: relative;
 
+	&--withMaxHeight
+		max-height: 100%
+		overflow: hidden
+		display: grid
+		grid-template-rows: auto 1fr auto
+
+		._Modal__Footer
+			padding-top: 10px
+
 	&__Close
 		width: 2em
 		height: 2em
