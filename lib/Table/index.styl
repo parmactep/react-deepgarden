@@ -7,22 +7,35 @@
 		display: table
 		table-layout: fixed
 		width: 100%
-		border-collapse: collapse
+		border-collapse: separate
 		position: relative
 
 	&__Header
 		display: table-header-group
 
 	&__Column
+		padding: 10px 20px
+		font-weight: bold
 		display: table-cell
 		font-size: 0.9em
-		line-height: 0.9em
 		vertical-align: middle
-		border: 1px solid $palette.border
-		color: $palette.light
+		border: none
+		position: sticky
+		top: 0
+		background: #FFF
+		z-index: 1
+		border-bottom: 1px solid $palette.border
 
-		&:first-of-type
-			border-left: none
+		&:not(:first-child)
+
+			&::before
+				content: ''
+				position: absolute
+				left: 0
+				top: 10px
+				bottom: 10px
+				width: 1px
+				background: $palette.border
 
 	&__Body
 		display: table-row-group
@@ -36,3 +49,9 @@
 		white-space: nowrap
 		text-overflow: ellipsis
 		vertical-align: middle
+		border-bottom: 1px solid $palette.border
+		padding: 15px 20px
+		font-weight: 600
+
+	&__Group
+		display: table-row-group
